@@ -1,0 +1,22 @@
+{
+    "name":"hasokeyk/elogo",
+    "description":"elogo ile fatura kesme i\u0000lemi yapar",
+    "type":"library",
+    "require":{
+        "guzzlehttp/guzzle":"^7.0.1",
+        "php": ">=7.0.0"
+    },
+    "autoload":{
+        "files":[
+            "src/elogo_api.php",
+            "src/elogo_src/autoload.php"
+        ]
+    },
+    "authors":[
+        {
+            "name":"Hasan Yüksektepe",
+            "email":"hasan.yuksektepe@ogr.iu.edu.tr"
+        }
+    ],
+    "minimum-stability":"stable"
+}
