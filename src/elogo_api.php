@@ -22,7 +22,7 @@
         public $zip_path         = (__DIR__).'/';
         public $invoce_prefix    = 'HSN';
         
-        function __construct($username, $password, $test = false){
+        public function __construct($username, $password, $test = false){
             
             $login = new Login();
             $login->setUserName($username);
@@ -40,6 +40,64 @@
             
         }
         
+        public function get_document_info($ettn = null, $document_type = 'EINVOICE'){
+            
+            try{
+                $result = $this->service->GetDocumentStatus(['DOCUMENTTYPE='.$document_type], $ettn);
+                return [
+                    'status'   => 'success',
+                    'message'  => $result,
+                    'request'  => $this->service->getLastRequest(),
+                    'response' => $this->service->getLastResponse(),
+                ];
+            }
+            catch(\Exception $err){
+                return [
+                    'status'   => 'danger',
+                    'message'  => $err->getMessage(),
+                    'request'  => $this->service->getLastRequest(),
+                    'response' => $this->service->getLastResponse(),
+                ];
+            }
+            
+        }
+        
+        public function get_documents($document_type = 'EINVOICE'){
+            
+            try{
+                $result = $this->service->GetDocument(['DOCUMENTTYPE='.$document_type]);
+                return [
+                    'status'   => 'success',
+                    'message'  => $result,
+                    'request'  => $this->service->getLastRequest(),
+                    'response' => $this->service->getLastResponse(),
+                ];
+            }
+            catch(\Exception $err){
+                return [
+                    'status'   => 'danger',
+                    'message'  => $err->getMessage(),
+                    'request'  => $this->service->getLastRequest(),
+                    'response' => $this->service->getLastResponse(),
+                ];
+            }
+            
+        }
+        
+        public function get_company_info($vkn_tcn = null){
+            
+            $param = [];
+            if(!is_array($vkn_tcn) and is_numeric($vkn_tcn)){
+                $param[] = $vkn_tcn;
+            }
+            else{
+                $param = $vkn_tcn;
+            }
+            $user = $this->service->CheckGibUser($param);
+            return $user;
+            
+        }
+        
         public function set_my_company($company = []){
             $this->my_company = $company;
         }
@@ -48,7 +106,7 @@
             $this->customer_company = $company;
         }
         
-        function send_einvoice($ettn = null, $invoice_number = null, $note = '', $date = null, $type = 'SATIS', $money_type = 'TRY'){
+        public function send_einvoice($ettn = null, $invoice_number = null, $note = '', $date = null, $type = 'SATIS', $money_type = 'TRY'){
             
             $info = [
                 'not'            => $note,
@@ -83,61 +141,26 @@
             $eLogoParamList[] = "DOCUMENTTYPE=EINVOICE";
             
             try{
-                return $this->service->SendDocument($eLogoParamList, $docType);
+                $result = $this->service->SendDocument($eLogoParamList, $docType);
+                return [
+                    'status'   => 'success',
+                    'message'  => $result,
+                    'request'  => $this->service->getLastRequest(),
+                    'response' => $this->service->getLastResponse(),
+                ];
             }
             catch(\Exception $err){
-                echo $err->getMessage();
+                return [
+                    'status'   => 'danger',
+                    'message'  => $err->getMessage(),
+                    'request'  => $this->service->getLastRequest(),
+                    'response' => $this->service->getLastResponse(),
+                ];
             }
             
         }
         
-        function cancel_einvoice($type = 'SATIS', $invoice_number = null, $ettn = null){
-            
-            $info = [
-                'not'            => 200,
-                'fatura_id'      => $invoice_number,
-                'ettn'           => $ettn,
-                'fatura_tarihi'  => $date??date('Y-m-d'), //2018-10-10
-                'fatura_tip'     => $type, //IADE,TEVKIFATIADE,IHRACKAYITLI,ISTISNA,OZELMATRAH,SATIS,TEVKIFAT,SGK
-                'profil_id'      => 'TICARIFATURA', //EARSIVFATURA TICARIFATURA
-                'para_birimi'    => 'TRY', //USD,EUR
-                'fatura_tasarim' => [
-                    'efatura' => $this->efatura_xslt,
-                    'earsiv'  => $this->earsiv_xslt,
-                ],
-                'fatura_kesen'   => $this->my_company,
-                'musteri'        => $this->customer_company,
-                'fatura'         => $this->invoice,
-            ];
-            
-            $xml      = $this->create_invoice_xml($info);
-            $zip_data = $this->create_zip($xml);
-            
-            $docType    = new DocumentType();
-            $binaryData = new Base64BinaryData();
-            $binaryData->setValue($zip_data['zip_data']);
-            
-            $docType->setBinaryData($binaryData);
-            $docType->setCurrentDate(date('c'));
-            $docType->setFileName($zip_data['zip_name']);
-            $docType->setHash(md5($zip_data['zip_data']));
-            
-            $eLogoParamList   = ['SIGNED=0'];
-            $eLogoParamList[] = "DOCUMENTTYPE=CANCELEARCHIVEINVOICE";
-            $eLogoParamList[] = "UUID=".$ettn;
-            $eLogoParamList[] = "ELEMENTID=".$invoice_number;
-            
-            try{
-                return $this->service->SendDocument($eLogoParamList, $docType);
-            }
-            catch(\Exception $err){
-                return $err->getMessage();
-                //return $this->service->getLastRequest();
-            }
-            
-        }
-        
-        function send_earchive($ettn = null, $invoice_number = null, $note = '', $date = null, $type = 'SATIS', $money_type = 'TRY'){
+        public function send_earchive($ettn = null, $invoice_number = null, $note = '', $date = null, $type = 'SATIS', $money_type = 'TRY'){
             
             $info = [
                 'not'            => $note,
@@ -172,15 +195,26 @@
             $eLogoParamList[] = "DOCUMENTTYPE=EARCHIVE";
             
             try{
-                return $this->service->SendDocument($eLogoParamList, $docType);
+                $result = $this->service->SendDocument($eLogoParamList, $docType);
+                return [
+                    'status'   => 'success',
+                    'message'  => $result,
+                    'request'  => $this->service->getLastRequest(),
+                    'response' => $this->service->getLastResponse(),
+                ];
             }
             catch(\Exception $err){
-                echo $err->getMessage();
+                return [
+                    'status'   => 'danger',
+                    'message'  => $err->getMessage(),
+                    'request'  => $this->service->getLastRequest(),
+                    'response' => $this->service->getLastResponse(),
+                ];
             }
             
         }
         
-        function cancel_earchive($type = 'SATIS', $invoice_number = null, $ettn = null){
+        public function cancel_earchive($type = 'SATIS', $invoice_number = null, $ettn = null){
             
             $info = [
                 'not'            => 200,
@@ -217,11 +251,21 @@
             $eLogoParamList[] = "ELEMENTID=".$invoice_number;
             
             try{
-                return $this->service->SendDocument($eLogoParamList, $docType);
+                $result = $this->service->SendDocument($eLogoParamList, $docType);
+                return [
+                    'status'   => 'success',
+                    'message'  => $result,
+                    'request'  => $this->service->getLastRequest(),
+                    'response' => $this->service->getLastResponse(),
+                ];
             }
             catch(\Exception $err){
-                echo $err->getMessage();
-                //return $this->service->getLastRequest();
+                return [
+                    'status'   => 'danger',
+                    'message'  => $err->getMessage(),
+                    'request'  => $this->service->getLastRequest(),
+                    'response' => $this->service->getLastResponse(),
+                ];
             }
             
         }
