@@ -270,7 +270,7 @@
             
         }
         
-        public function create_invoice_number($prefix = 'HSN', $number = 0){
+        public function create_invoice_number($prefix = null, $number = 0){
             $prefix = mb_substr($prefix??$this->invoce_prefix, 0, 3);
             if($number == 0){
                 return $prefix.date('Y').rand(111111111, 999999999);
