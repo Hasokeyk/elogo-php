@@ -231,8 +231,6 @@
 			$xml      = $this->create_invoice_xml($info);
 			$zip_data = $this->create_zip($xml);
 
-			file_put_contents('a.xml', $xml);
-
 			$docType    = new DocumentType();
 			$binaryData = new Base64BinaryData();
 			$binaryData->setValue($zip_data['zip_data']);
