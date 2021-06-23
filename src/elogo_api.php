@@ -2,10 +2,10 @@
     
     namespace elogo_api;
     
-    use ELogo\Utils\Login;
     use ELogo\API\ELogoClient;
-    use ELogo\Utils\DocumentType;
     use ELogo\Utils\Base64BinaryData;
+    use ELogo\Utils\DocumentType;
+    use ELogo\Utils\Login;
     use ZipArchive;
     
     class elogo_api{
@@ -263,42 +263,11 @@
             
         }
         
-        public function cancel_earchive($type = 'SATIS', $invoice_number = null, $ettn = null){
+        public function cancel_earchive($invoice_number = null, $ettn = null){
             
-            $info = [
-                'not'            => 200,
-                'fatura_id'      => $invoice_number,
-                'ettn'           => $ettn,
-                'fatura_tarihi'  => $date ?? date('Y-m-d'),
-                //2018-10-10
-                'fatura_tip'     => $type,
-                //IADE,TEVKIFATIADE,IHRACKAYITLI,ISTISNA,OZELMATRAH,SATIS,TEVKIFAT,SGK
-                'profil_id'      => 'EARSIVFATURA',
-                //EARSIVFATURA TICARIFATURA
-                'para_birimi'    => '',
-                //USD,EUR
-                'fatura_tasarim' => [
-                    'efatura' => $this->efatura_xslt,
-                    'earsiv'  => $this->earsiv_xslt,
-                ],
-                'fatura_kesen'   => $this->my_company,
-                'musteri'        => $this->customer_company,
-                'fatura'         => $this->invoice,
-            ];
+            $docType = new DocumentType();
             
-            $xml      = $this->create_invoice_xml($info);
-            $zip_data = $this->create_zip($xml);
-            
-            $docType    = new DocumentType();
-            $binaryData = new Base64BinaryData();
-            $binaryData->setValue($zip_data['zip_data']);
-            
-            $docType->setBinaryData($binaryData);
-            $docType->setCurrentDate(date('c'));
-            $docType->setFileName($zip_data['zip_name']);
-            $docType->setHash(md5($zip_data['zip_data']));
-            
-            $eLogoParamList   = ['SIGNED=0'];
+            $eLogoParamList   = [];
             $eLogoParamList[] = "DOCUMENTTYPE=CANCELEARCHIVEINVOICE";
             $eLogoParamList[] = "UUID=".$ettn;
             $eLogoParamList[] = "ELEMENTID=".$invoice_number;
@@ -326,10 +295,10 @@
         public function create_invoice_number($prefix = null, $number = 0){
             $prefix = mb_substr($prefix ?? $this->invoce_prefix, 0, 3);
             if($number == 0){
-                return $prefix.date('Y').rand(111111111, 999999999);
+                return $prefix.date('Y').rand(100000000, 999999999);
             }
             else{
-                return $prefix.date('Y').str_pad($number, 8, "0", STR_PAD_LEFT);
+                return $prefix.date('Y').str_pad($number, 9, "0", STR_PAD_LEFT);
             }
         }
         
