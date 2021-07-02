@@ -10,17 +10,17 @@
     
     class elogo_api{
         
-        public $login = null;
-        public $service = null;
-        public $session_id = null;
-        public $my_company = null;
+        public $login            = null;
+        public $service          = null;
+        public $session_id       = null;
+        public $my_company       = null;
         public $customer_company = null;
-        public $invoice = null;
-        public $efatura_xslt = (__DIR__).'/invoice_templates/CB9E5959-B6F9-4B28-99A8-A80006B3DE6B.xslt';
-        public $earsiv_xslt = (__DIR__).'/invoice_templates/7141796B-2A35-4C87-9413-DC1867DDC8CC.xslt';
-        public $xml_path = (__DIR__).'/';
-        public $zip_path = (__DIR__).'/';
-        public $invoce_prefix = 'HSN';
+        public $invoice          = null;
+        public $efatura_xslt     = (__DIR__).'/invoice_templates/CB9E5959-B6F9-4B28-99A8-A80006B3DE6B.xslt';
+        public $earsiv_xslt      = (__DIR__).'/invoice_templates/7141796B-2A35-4C87-9413-DC1867DDC8CC.xslt';
+        public $xml_path         = (__DIR__).'/';
+        public $zip_path         = (__DIR__).'/';
+        public $invoce_prefix    = 'HSN';
         
         public function __construct($username, $password, $test = false){
             
@@ -115,14 +115,14 @@
             
         }
         
-        public function get_documents_data($document_type = 'EINVOICE', $format = 'PDF', $is_cancel = false){
+        public function get_documents_data($invoice_number = null, $document_type = 'EINVOICE', $format = 'PDF', $is_cancel = false){
             
             try{
                 $result = $this->service->GetDocumentData([
                     'DOCUMENTTYPE='.$document_type,
                     'DATAFORMAT='.$format,
                     'ISCANCEL='.$is_cancel ? '1' : '0',
-                ], $this->session_id);
+                ], $invoice_number);
                 return [
                     'status'   => 'success',
                     'message'  => $result,
@@ -139,6 +139,25 @@
                 ];
             }
             
+        }
+        
+        public function unzip($name = null, $binary = null){
+            if($binary != null){
+                $binary = base64_decode($binary);
+                
+                $file_full_name = tempnam(sys_get_temp_dir(), 'pdf');
+                $file_temp_path = sys_get_temp_dir();
+                file_put_contents($file_full_name, $binary);
+                
+                $zip = new ZipArchive;
+                if($zip->open($file_full_name) === TRUE){
+                    $zip->extractTo($file_temp_path);
+                    $zip->close();
+                    return file_get_contents($file_temp_path.'/'.$name.'.pdf');
+                }
+                
+            }
+            return false;
         }
         
         public function get_company_info($vkn_tcn = null){
