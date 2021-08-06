@@ -26,7 +26,7 @@
          * @var string[]
          */
         private $headers = [
-            'Connection'   => 'Keep-Alive',
+            //'Connection'   => 'Keep-Alive',
             'User-Agent'   => 'UNLEM-SOAP/7.2.22',
             'Content-Type' => 'text/xml; charset=utf-8',
             'Pragma'       => 'no-cache',
