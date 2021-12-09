@@ -1,23 +1,25 @@
 {
   "name": "hasokeyk/elogo",
-  "description": "elogo ile fatura kesme i\u0000lemi yapar",
+  "authors": [
+    {
+      "name": "Hasan Yüksektepe",
+      "email": "hasanhasokeyk@hotmail.com",
+      "homepage": "https://hayatikodla.net",
+      "role": "Developer"
+    }
+  ],
   "type": "library",
+  "keywords": ["elogo","efatura","elogo muhasebe"],
+  "homepage": "https://hayatikodla.net",
+  "license": "MIT",
+  "minimum-stability": "stable",
   "require": {
-    "guzzlehttp/guzzle": "^7.0.1",
-    "php": ">=7.0.0",
-    "ext-zip": "*"
+    "guzzlehttp/guzzle":"^7.0.1"
   },
   "autoload": {
     "files": [
       "src/elogo_api.php",
       "src/elogo_src/autoload.php"
     ]
-  },
-  "authors": [
-    {
-      "name": "Hasan Yüksektepe",
-      "email": "hasanhasokeyk@hotmail.com"
-    }
-  ],
-  "minimum-stability": "stable"
+  }
 }
