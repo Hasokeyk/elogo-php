@@ -1,4 +1,9 @@
-# Elogo E-Fatura ve E-Arşiv Fatura Kesme 
+### Kurulum
+```sh
+  composer require hasokeyk/elogo
+  ```
+
+### Elogo E-Fatura ve E-Arşiv Fatura Kesme 
 Bu kütüphane ile php alt yapınıza efatura ve earşiv fatura kesme işlemleriniz yapabilirsiniz.
 
 | İşlemler  | Çalışıyor | Örnek Dosya |
