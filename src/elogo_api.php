@@ -405,7 +405,7 @@
                     'toplam_tutar'       => 1000.00,
                     'kdv_tutar'          => 180.00,
                     'kdv_oran'           => 18.00,
-                    'kdv_muhafiyet_kodu' => 223,
+                    'kdv_muafiyet_kodu' => 223,
                     'para_birimi'        => 'TRY',
                     'kur_fiyati'         => "8.5",
                     'fatura_tip'         => 'ISTISNA',
@@ -615,9 +615,9 @@
             $TaxSubtotal->addChild('Percent', $p['fatura']['kdv_oran'], $xmlNs['cbc']);
             
             $TaxCategory = $TaxSubtotal->addChild('TaxCategory', null, $xmlNs['cac']);
-            if(isset($p['fatura']['kdv_muhafiyet_kodu']) and $p['fatura']['kdv_muhafiyet_kodu'] != null){
-                $TaxCategory->addChild('TaxExemptionReasonCode', $p['fatura']['kdv_muhafiyet_kodu'], $xmlNs['cbc']);
-                $TaxCategory->addChild('TaxExemptionReason', $kdv_muhafiyet[$p['fatura']['kdv_muhafiyet_kodu']], $xmlNs['cbc']);
+            if(isset($p['fatura']['kdv_muafiyet_kodu']) and $p['fatura']['kdv_muafiyet_kodu'] != null){
+                $TaxCategory->addChild('TaxExemptionReasonCode', $p['fatura']['kdv_muafiyet_kodu'], $xmlNs['cbc']);
+                $TaxCategory->addChild('TaxExemptionReason', $kdv_muhafiyet[$p['fatura']['kdv_muafiyet_kodu']], $xmlNs['cbc']);
             }
             $TaxScheme = $TaxCategory->addChild('TaxScheme', null, $xmlNs['cac']);
             $TaxScheme->addChild('Name', 'KDV GERCEK', $xmlNs['cbc']);
@@ -662,9 +662,9 @@
                     
                     $TaxCategory = $TaxSubtotal->addChild('TaxCategory', null, $xmlNs['cac']);
                     
-                    if(isset($p['fatura']['kdv_muhafiyet_kodu']) and $p['fatura']['kdv_muhafiyet_kodu'] != null){
-                        $TaxCategory->addChild('TaxExemptionReasonCode', $p['fatura']['kdv_muhafiyet_kodu'], $xmlNs['cbc']);
-                        $TaxCategory->addChild('TaxExemptionReason', $kdv_muhafiyet[$p['fatura']['kdv_muhafiyet_kodu']], $xmlNs['cbc']);
+                    if(isset($p['fatura']['kdv_muafiyet_kodu']) and $p['fatura']['kdv_muafiyet_kodu'] != null){
+                        $TaxCategory->addChild('TaxExemptionReasonCode', $p['fatura']['kdv_muafiyet_kodu'], $xmlNs['cbc']);
+                        $TaxCategory->addChild('TaxExemptionReason', $kdv_muhafiyet[$p['fatura']['kdv_muafiyet_kodu']], $xmlNs['cbc']);
                     }
                     
                     $TaxScheme = $TaxCategory->addChild('TaxScheme', null, $xmlNs['cac']);
