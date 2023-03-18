@@ -9,17 +9,23 @@
     }
   ],
   "type": "library",
-  "keywords": ["elogo","efatura","elogo muhasebe"],
+  "keywords": [
+    "elogo",
+    "efatura",
+    "elogo muhasebe"
+  ],
   "homepage": "https://hayatikodla.net",
   "license": "MIT",
   "minimum-stability": "stable",
-  "require": {
-    "guzzlehttp/guzzle":"^7.0.1"
-  },
   "autoload": {
-    "files": [
-      "src/elogo_api.php",
-      "src/elogo_src/autoload.php"
-    ]
+    "psr-4": {
+      "Hasokeyk\\Elogo\\": "src/Elogo"
+    }
+  },
+  "require": {
+    "ext-simplexml": "*",
+    "ext-dom": "*",
+    "ext-xmlwriter": "*",
+    "ext-zip": "*"
   }
 }

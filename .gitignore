@@ -2,3 +2,6 @@ index.php
 src/.DS_Store
 /vendor/
 /.idea/
+/test_template/
+/fatura.xml
+/test_assets/
