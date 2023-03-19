@@ -125,6 +125,43 @@
                 $this->musteri_firmasi_xml();
 
                 if($para_birimi != 'TRY'){
+
+                    //USD KUR MAL HİZMET
+                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', $fatura_toplam_tutar * $kur_fiyati, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', 'LINEEXTENSIONAMOUNT', $this->xml_ns["cbc"]);
+                    //USD KUR MAL HİZMET
+
+                    //USD KUR ÖDENECEK TOPLAM TUTAR
+                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', ($fatura_genel_toplam * $kur_fiyati), $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', 'PAYABLEAMOUNT', $this->xml_ns["cbc"]);
+                    //USD KUR ÖDENECEK TOPLAM TUTAR
+
+                    //                    //USD KUR HESAPLANAN GERÇEK KDV
+                    //                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    //                    $additional_document_reference->addChild('ID', 2, $this->xml_ns["cbc"]);
+                    //                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    //                    $additional_document_reference->addChild('DocumentType', 'ALLOWANCETOTALAMOUNT', $this->xml_ns["cbc"]);
+                    //                    //USD KUR HESAPLANAN GERÇEK KDV
+
+                    //USD KUR HESAPLANAN VERGİLER DAHİL TOPLAM TUTAR
+                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', ($fatura_genel_toplam * $kur_fiyati), $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', 'TAXINCLUSIVEAMOUNT', $this->xml_ns["cbc"]);
+                    //USD KUR HESAPLANAN VERGİLER DAHİL TOPLAM TUTAR
+
+                    //USD KUR HESAPLANAN GERÇEK KDV
+                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', $fatura_toplam_kdv_tutar * $kur_fiyati, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentTypeCode', '0015', $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', $fatura_kdv_orani, $this->xml_ns["cbc"]);
+                    //USD KUR HESAPLANAN GERÇEK KDV
+
                     $PricingExchangeRat = $fatura_xml->addChild('PricingExchangeRate', null, $this->xml_ns['cac']);
 
                     $SourceCurrencyCode = $PricingExchangeRat->addChild('SourceCurrencyCode', $para_birimi, $this->xml_ns['cbc']);

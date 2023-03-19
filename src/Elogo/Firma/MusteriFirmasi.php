@@ -327,10 +327,10 @@
             if(empty($this->vergi_dairesi)){
                 throw new ElogoHata("Vergi Dairesi Zorunludur");
             }
-
-            if(empty($this->mersis_no)){
-                throw new ElogoHata("Mersis No Zorunludur");
-            }
+//
+//            if(empty($this->mersis_no)){
+//                throw new ElogoHata("Mersis No Zorunludur");
+//            }
 
             if(empty($this->telefon)){
                 throw new ElogoHata("Telefon Zorunludur");

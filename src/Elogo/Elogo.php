@@ -433,4 +433,17 @@
             return $this->client->GetDocumentData($params);
 
         }
+
+        public function earsiv_iptal_et(){
+
+            $params = [
+                'sessionID' => $this->session_id,
+                'uuid'      => $fatura_uuid,
+                'docType'   => $fatura_turu,
+                'dataType'  => $format,
+            ];
+
+            return $this->client->GetDocumentData($params);
+
+        }
     }
