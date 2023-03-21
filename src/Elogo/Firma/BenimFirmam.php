@@ -39,6 +39,7 @@
          */
         public function setFirmaAdi($firma_adi){
             $this->firma_adi = $firma_adi;
+            return $this;
         }
 
         /**
@@ -53,6 +54,7 @@
          */
         public function setTicariSicilNo($ticari_sicil_no){
             $this->ticari_sicil_no = $ticari_sicil_no;
+            return $this;
         }
 
         /**
@@ -67,6 +69,7 @@
          */
         public function setTcKimlikNo($tc_kimlik_no){
             $this->tc_kimlik_no = $tc_kimlik_no;
+            return $this;
         }
 
         /**
@@ -81,6 +84,7 @@
          */
         public function setVergiNo($vergi_no){
             $this->vergi_no = $vergi_no;
+            return $this;
         }
 
         /**
@@ -95,6 +99,7 @@
          */
         public function setVergiDairesi($vergi_dairesi){
             $this->vergi_dairesi = $vergi_dairesi;
+            return $this;
         }
 
         /**
@@ -109,6 +114,7 @@
          */
         public function setMersisNo($mersis_no){
             $this->mersis_no = $mersis_no;
+            return $this;
         }
 
         /**
@@ -123,6 +129,7 @@
          */
         public function setTelefon($telefon){
             $this->telefon = $telefon;
+            return $this;
         }
 
         /**
@@ -137,6 +144,7 @@
          */
         public function setWebsitesi($websitesi){
             $this->websitesi = $websitesi;
+            return $this;
         }
 
         /**
@@ -151,6 +159,7 @@
          */
         public function setEmail($email){
             $this->email = $email;
+            return $this;
         }
 
         /**
@@ -165,6 +174,7 @@
          */
         public function setFax($fax){
             $this->fax = $fax;
+            return $this;
         }
 
         /**
@@ -179,6 +189,7 @@
          */
         public function setAcikAdres($acik_adres){
             $this->acik_adres = $acik_adres;
+            return $this;
         }
 
         /**
@@ -193,6 +204,7 @@
          */
         public function setBinaAdi($bina_adi){
             $this->bina_adi = $bina_adi;
+            return $this;
         }
 
         /**
@@ -207,6 +219,7 @@
          */
         public function setBinaNo($bina_no){
             $this->bina_no = $bina_no;
+            return $this;
         }
 
         /**
@@ -221,6 +234,7 @@
          */
         public function setIl($il){
             $this->il = $il;
+            return $this;
         }
 
         /**
@@ -235,6 +249,7 @@
          */
         public function setIlce($ilce){
             $this->ilce = $ilce;
+            return $this;
         }
 
         /**
@@ -249,6 +264,7 @@
          */
         public function setPostaKodu($posta_kodu){
             $this->posta_kodu = $posta_kodu;
+            return $this;
         }
 
         /**
@@ -263,6 +279,7 @@
          */
         public function setUlke($ulke){
             $this->ulke = $ulke;
+            return $this;
         }
 
         /**
@@ -277,6 +294,7 @@
          */
         public function setUlkeKodu($ulke_kodu){
             $this->ulke_kodu = $ulke_kodu;
+            return $this;
         }
 
         /**
@@ -291,6 +309,7 @@
          */
         public function setYetkiliAdi($yetkili_adi){
             $this->yetkili_adi = $yetkili_adi;
+            return $this;
         }
 
         /**
@@ -305,6 +324,7 @@
          */
         public function setYetkiliSoyadi($yetkili_soyadi){
             $this->yetkili_soyadi = $yetkili_soyadi;
+            return $this;
         }
 
 
@@ -314,17 +334,17 @@
                 throw new ElogoHata("Firma Adı Zorunludur");
             }
 
-//            if(empty($this->vergi_no)){
-//                throw new ElogoHata("Vergi No Zorunludur");
-//            }
+            //            if(empty($this->vergi_no)){
+            //                throw new ElogoHata("Vergi No Zorunludur");
+            //            }
 
-            if(empty($this->vergi_dairesi)){
-                throw new ElogoHata("Vergi Dairesi Zorunludur");
-            }
+            //            if(empty($this->vergi_dairesi)){
+            //                throw new ElogoHata("Vergi Dairesi Zorunludur");
+            //            }
 
-//            if(empty($this->mersis_no)){
-//                throw new ElogoHata("Mersis No Zorunludur");
-//            }
+            //            if(empty($this->mersis_no)){
+            //                throw new ElogoHata("Mersis No Zorunludur");
+            //            }
 
             if(empty($this->telefon)){
                 throw new ElogoHata("Telefon Zorunludur");
@@ -334,9 +354,9 @@
                 throw new ElogoHata("Email Zorunludur");
             }
 
-            if(empty($this->websitesi)){
-                throw new ElogoHata("Websitesi Zorunludur");
-            }
+//            if(empty($this->websitesi)){
+//                throw new ElogoHata("Websitesi Zorunludur");
+//            }
 
             if(empty($this->acik_adres)){
                 throw new ElogoHata("Açık Adres Zorunludur");
@@ -370,13 +390,13 @@
                 throw new ElogoHata("Ülke Kodu Zorunludur");
             }
 
-            if(empty($this->yetkili_adi)){
-                throw new ElogoHata("Yetkili Adı Zorunludur");
-            }
+//            if(empty($this->yetkili_adi)){
+//                throw new ElogoHata("Yetkili Adı Zorunludur");
+//            }
 
-            if(empty($this->yetkili_soyadi)){
-                throw new ElogoHata("Yetkili Soyadı Zorunludur");
-            }
+//            if(empty($this->yetkili_soyadi)){
+//                throw new ElogoHata("Yetkili Soyadı Zorunludur");
+//            }
         }
 
     }

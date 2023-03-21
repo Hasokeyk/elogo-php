@@ -27,9 +27,90 @@
         ];
 
         public $kdv_muhafiyet = [
-            "223" => "Geçici 20/1 Teknoloji Geliştirme Bölgelerinde Yapılan İşlemler",
-            "351" => "KDV - İstisna Olmayan Diğer",
-            "302" => "11/1-a Hizmet İhracatı",
+            '201' => '17/1	Kültür ve eğitim amacı taşıyan işlemler',
+            '202' => '17/2-a	Sağlık, çevre ve sosyal yardım amaçlı işlemler',
+            '204' => '17/2-c	Yabancı diplomatik organ ve hayır kurumlarının yapacakları bağışlarla ilgili mal ve hizmet alışları',
+            '205' => '17/2-d	Taşınmaz kültür varlıklarına ilişkin teslimler ve mimarlık hizmetleri',
+            '206' => '17/2-e	Mesleki kuruluşların işlemleri',
+            '207' => '17/3	Askeri fabrika, tersane ve atölyelerin işlemleri',
+            '208' => '17/4-c	Birleşme, devir, dönüşüm ve bölünme işlemleri',
+            '209' => '17/4-e	Banka ve sigorta muamaleleri vergisi kapsamına giren işlemler',
+            '211' => '17/4-h	Zirai amaçlı su teslimleri ile köy tüzel kişiliklerince yapılan içme suyu teslimleri',
+            '212' => '17/4-ı	Serbest bölgelerde verilen hizmetler',
+            '213' => '17/4-j	Boru hattı ile yapılan petrol ve gaz taşımacılığı',
+            '214' => '17/4-k	Organize sanayi bölgelerindeki arsa ve işyeri teslimleri ile konut yapı kooperatiflerinin üyelerine konut teslimleri',
+            '215' => '17/4-l	Varlık yönetim şirketlerinin işlemleri',
+            '216' => '17/4-m	Tasarruf mevduatı sigorta fonunun işlemleri',
+            '217' => '17/4-n	Basın-Yayın ve Enformasyon Genel Müdürlüğüne verilen haber hizmetleri',
+            '218' => '17/4-o	Gümrük antrepoları, geçici depolama yerleri, gümrüklü sahalar ve vergisiz satış yapılan mağazalarla ilgili hizmetler',
+            '219' => '17/4-p	Hazine ve Arsa Ofisi Genel Müdürlüğünün işlemleri',
+            '220' => '17/4-r	İştirak hisseleri ve gayrimenkul satışları',
+            '221' => 'Geçici 15 Konut yapı kooperatifleri, belediyeler ve sos. güv.kuruluşlarıına verilen inşaat taahhüt hizmeti',
+            '223' => 'Geçici 20/1 Teknoloji geliştirme bölgelerinde yapılan işlemler',
+            '225' => 'Geçici 23 Milli Eğitim Bakanlığına yapılan bilgisayar bağışları ile ilgili teslimler',
+            '226' => '17/2-b	Özel okullar, üniversite ve yüksekokullar tarafından verilen bedelsiz eğitim ve öğretim hizmetleri',
+            '227' => '17/2-b	Kanunların gösterdiği gerek üzerine bedelsiz olarak yapılan teslim ve hizmetler',
+            '228' => '17/2-b	Kanunun (17/1) maddesinde sayılan kurum ve kuruluşlara bedelsiz olarak yapılan teslim ve hizmetler',
+            '229' => '17/2-b	Gıda bankacılığı faaliyetinde bulunan dernek ve vakıflara bağışlanan gıda, temizlik, giyecek ve yakacak maddeleri',
+            '230' => '17/4-g	Külçe altın, külçe gümüş, kıymetli taş teslimleri',
+            '231' => '17/4-g	Metal, plastik, lastik, kauçuk, kağıt, cam hurda ve atıkları teslimi',
+            '232' => '17/4-g	Döviz, para, damga pulu, değerli kağıtlar, hisse senedi, tahvil teslimleri',
+            '234' => '17/4-ş	Konut Finansmanı Amacıyla Teminat Gösterilen ve İpotek Konulan Konutların Teslimi',
+            '235' => '16/1-c	Transit ve gümrük antrepo rejimleri ile geçici depolama ve serbest bölge hükümlerinin uygulandığı malların teslimi',
+            '236' => '19/2	Usulüne göre yürürlüğe girmiş uluslararası anlaşmalar kapsamındaki istisnalar (İade hakkı tanınmayan)',
+            '237' => '17/4-t	5300 Sayılı Kanuna Göre Düzenlenen Ürün Senetlerinin İhtisas/Ticaret Borsaları Aracılığıyla İlk Tesliminden Sonraki Teslimi',
+            '238' => '17/4-u	Varlıkların Varlık Kiralama Şirketlerine Devri ile Bu Varlıkların Varlık Kiralama Şirketlerince Kiralanması ve Devralınan Kuruma Devri',
+            '239' => '17/4-y	Taşınmazların Finansal Kiralama Şirketlerine Devri,Finansal Kiralama Şirketi Tarafından Devredene Kiralanması ve Devri',
+            '240' => '17/4-z	Patentli veya Faydalı Model Belgeli Buluşa İlişkin Gayrimaddi Hakların Kiralanması, Devri ve Satışı',
+            '250' => 'Diğerleri',
+            '301' => '11/1-a	Mal ihracatı',
+            '302' => '11/1-a	Hizmet İhracatı',
+            '303' => '11/1-a	Roaming hizmetleri',
+            '304' => '13/a	Deniz, hava ve demiryolu taşıma araçlarının teslimi ile inşa, tadil, bakım ve onarımları',
+            '305' => '13/b	Deniz ve hava taşıma araçları için liman ve hava meydanlarında yapılan hizmetler',
+            '306' => '13/c	Petrol aramaları ve petrol boru hatlarının inşa ve modernizasyonuna ilişkin yapılan teslim ve hizmetler',
+            '307' => '13/c	Kıymetli madenlerin arama, zenginleştirme ve rafinaj faaliyetleri',
+            '308' => '13/d	Teşvikli yatırım mallarının teslimi',
+            '309' => '13/e	Limanlara bağlantı sağlayan demiryolu hatları ile liman ve hava meydanlarının inşası, yenilenmesi ve genişletilmesi',
+            '310' => '13/f	Ulusal güvenlik amaçlı teslim ve hizmetler',
+            '311' => '14.Oca	Uluslararası taşımacılık',
+            '312' => '15/a	Diplomatik organ ve misyonlara yapılan teslim ve hizmetler',
+            '313' => '15/b	Uluslarası kurulaşlara yapılan teslim ve hizmetler',
+            '314' => '19.Şub	Usulüne göre yürürlüğe girmiş uluslar arası anlaşmalar kapsamındaki istisnalar (İade hakkı tanınan)',
+            '315' => '14.Mar	İhraç konusu eşyayı taşıyan kamyon, çekici ve yarı romorklara yapılan motorin teslimleri',
+            '316' => '11/1-a	Serbest bölgelerdeki müşteriler için yapılan fason hizmetler',
+            '317' => '17/4-s	Özürlülerin eğitimleri, meslekleri ve günlük yaşamlarına ilişkin araç-gereç ve bilgisayar programları',
+            '350' => 'Diğerleri',
+            '351' => 'İstisna Olmayan Diğer',
+            '401' => '8.Oca	Fazla ve yersiz ödenen vergiler',
+            '403' => '11/1-a	61 No.lu KDV Genel Tebliği kapsamındaki satışlarla ilgili yüklenilen KDV',
+            '405' => '11/1-c ve Geçici 17	İhracatı bu dönemde gerçekleşen indirimli orana tabi malların ihraç kaydıyla teslimleri ile ilgili yüklenilen KDV farkı',
+            '406' => '29/2	İndirimli orana tabi işlemler',
+            '408' => '11/1-b	43 No.lu KDV Genel Tebliği kapsamındaki teslimlerle ilgili olup bu dönemde alıcıya iade edilen KDV',
+            '409' => '9.Şub	İstisnadan vazgeçenlerin hurda ve atık teslimlerinde alıcı tarafından tevkif edilen KDV',
+            '410' => '9.Şub	91 No.lu G.T. (A/2) bölümünde belirtilen kurum ve kuruluşlara yapılan yapım işlerine ait tevkif edilen KDV',
+            '411' => '9.Şub	91 No.lu G.T. (A/2) bölümünde belirtilen kurum ve kuruluşlara yapılan temizlik işlerine ait tevkif edilen KDV',
+            '412' => '9.Şub	91 No.lu G.T. (A/2) bölümünde belirtilen kurum ve kuruluşlara yapılan bahçe ve çevre bakım işlerine ait tevkif edilen KDV',
+            '413' => '9.Şub	91 No.lu G.T. (A/2) bölümünde belirtilen kurum ve kuruluşlara yapılan özel güvenlik hizmetlerine ait tevkif edilen KDV',
+            '414' => '9.Şub	91 No.lu G.T. (A/2) bölümünde belirtilen kurum ve kuruluşlara yapılan tadil,bakım,onarım hizmetlerine ait tevkif edilen KDV',
+            '415' => '9.Şub	91 No.lu G.T. (A/2) bölümünde belirtilen kurum ve kuruluşlara yapılan yemek sevis hizmetlerine ait tevkif edilen KDV',
+            '416' => '9.Şub	91 No.lu G.T. (A/2) bölümünde belirtilen kurum ve kuruluşlara yapılan danışmanlık-denetim hizmetlerine ait tevkif edilen KDV',
+            '417' => '9.Şub	91 No.lu G.T. (A/2) bölümünde belirtilen kurum ve kuruluşlara yapılan işgücü hizmetlerine ait tevkif edilen KDV',
+            '418' => '9.Şub	Bakır, alüminyum ve çinko külçe teslimlerinde alıcı tarafından tevkif edilen KDV',
+            '419' => '9.Şub	Bakır, alüminyum, çinko ve bunların alaşımlarından elde edilen mamullerin teslimlerinde alıcı tarafından tevkif edilen KDV',
+            '420' => '9.Şub	Yapı denetim hizmeti ile ilgili olarak alıcı tarafından tevkif edilen KDV (91 No.lu GT kapsamı dışındaki mükelleflere yapılanlar)',
+            '421' => '9.Şub	İş gücü hizmeti ile ilgili olarak alıcı tarafından tevkif edilen KDV (91 No.lu GT kapsamı dışındaki mükelleflere yapılanlar)',
+            '422' => '9.Şub	Özel güvenlik hizmeti ile ilgili olarak alıcı tarafından tevkif edilen KDV (91 No.lu GT kapsamı dışındaki mükelleflere yapılanlar)',
+            '423' => '9.Şub	Fason tekstil ve konfeksiyon işlerinde alıcı tarafından tevkif edilen KDV',
+            '424' => '9.Şub	Diğer kısmi tevkifata tabi işlemlerde alıcı tarafından beyan edilecek KDV',
+            '425' => '13/a	Sipariş verenin bu istisna kapsamındaki araçların imal ve inşasında kullanılan KDV’ye tabi mal ve hizmet alımları',
+            '426' => '13/c	Kıymetli madenlerin arama, zenginleştirme ve rafinaj faaliyetleri',
+            '427' => '13/f	Ulusal güvenlik amaçlı teslim ve hizmetin yapılmasından önceki iade talepleri ile tedarikçilerin iade talepleri',
+            '428' => '9.Şub	Pamuk, tiftik, yün ve yapağı ile ham post ve deri teslimlerinde alıcı tarafından tevkif edilen KDV',
+            '429' => '9.Şub	Büyük ve küçükbaş hayvan etlerinin tesliminde alıcı tarafından tevkif edilen KDV',
+            '430' => '9.Şub	Hurda metalden elde edilen külçe teslimlerinde alıcı tarafından tevkif edilen KDV',
+            '431' => '9.Şub	Turizm acente, rehber ve benzerlerine yapılan komisyon ödemelerine ilişkin alıcı tarafından tevkif edilen KDV',
+            '450' => 'Diğerleri',
         ];
 
         public function __construct(Fatura $fatura, BenimFirmam $benim_firmam, MusteriFirmasi $musteri_firmasi){
@@ -38,12 +119,12 @@
             $this->musteri_firmasi = $musteri_firmasi;
         }
 
-        public function getir_ubl_xml($fatura_turu){
+        public function getir_ubl_xml($fatura_tasarimi = 'TICARIFATURA'){
 
             try{
 
-                //            $fatura_turu   = $this->fatura->fatura_turu;
-                $fatura_tipi        = $this->fatura->fatura_tipi ?? 'SATIS';
+                $fatura_senaryo     = $this->fatura->fatura_senaryo ?? 'TICARIFATURA';
+                $fatura_turu        = $this->fatura->fatura_turu ?? 'SATIS';
                 $fatura_no          = $this->fatura->fatura_no;
                 $fatura_ettn        = $this->fatura->fatura_ettn;
                 $fatura_tarihi      = $this->fatura->fatura_tarihi;
@@ -64,14 +145,14 @@
 
                 $xml_string = trim('<?xml version="1.0" encoding="utf-8"?>');
 
-                if($fatura_turu == 'TICARIFATURA'){
+                if($fatura_tasarimi == 'TICARIFATURA'){
                     $xml_string                 .= $this->get_ticari_fatura_xml();
                     $fatura_tasarimi_yolu       = $efatura_tasarim;
                     $tasarim_adi                = pathinfo($fatura_tasarimi_yolu);
                     $tasarim_dosya_adi          = $tasarim_adi['filename'];
                     $tasarim_dosya_adi_uzantili = $tasarim_adi['basename'];
                 }
-                else if($fatura_turu == 'EARSIVFATURA'){
+                else if($fatura_tasarimi == 'EARSIVFATURA'){
                     $xml_string                 .= $this->get_earsiv_fatura_xml();
                     $fatura_tasarimi_yolu       = $earsiv_tasarim;
                     $tasarim_adi                = pathinfo($fatura_tasarimi_yolu);
@@ -84,13 +165,13 @@
 
                 $fatura_xml->addChild('UBLVersionID', '2.1', $this->xml_ns['cbc']);
                 $fatura_xml->addChild('CustomizationID', 'TR1.2', $this->xml_ns['cbc']);
-                $fatura_xml->addChild('ProfileID', $fatura_turu, $this->xml_ns['cbc']);
+                $fatura_xml->addChild('ProfileID', $fatura_senaryo, $this->xml_ns['cbc']);
                 $fatura_xml->addChild('ID', $fatura_no, $this->xml_ns['cbc']);
                 $fatura_xml->addChild('CopyIndicator', 'false', $this->xml_ns['cbc']);
                 $fatura_xml->addChild('UUID', $fatura_ettn, $this->xml_ns['cbc']);
                 $fatura_xml->addChild('IssueDate', $fatura_tarihi, $this->xml_ns['cbc']);
                 $fatura_xml->addChild('IssueTime', date('H:i:s'), $this->xml_ns['cbc']);
-                $fatura_xml->addChild('InvoiceTypeCode', $fatura_tipi, $this->xml_ns['cbc']);
+                $fatura_xml->addChild('InvoiceTypeCode', $fatura_turu, $this->xml_ns['cbc']);
                 $fatura_xml->addChild('Note', $fatura_notu, $this->xml_ns['cbc']);
 
                 $this->ozel_paremetre($this->fatura->getOzelParametreler());
@@ -101,14 +182,49 @@
                 $DocumentCurrencyCode->addAttribute('listName', 'Currency');
                 $DocumentCurrencyCode->addAttribute('listVersionID', '2001');
 
-                $fatura_xml->addChild('LineCountNumeric', '1', $this->xml_ns['cbc']);
+                $fatura_xml->addChild('LineCountNumeric', count($urunler), $this->xml_ns['cbc']);
 
                 $xslt = base64_encode(file_get_contents($fatura_tasarimi_yolu));
 
-                $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                $additional_document_reference->addChild('ID', 'gonderimSekli', $this->xml_ns["cbc"]);
-                $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
-                $additional_document_reference->addChild('DocumentType', 'ELEKTRONIK', $this->xml_ns["cbc"]);
+                if($para_birimi != 'TRY'){
+
+                    //USD KUR MAL HİZMET
+                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', $fatura_toplam_tutar * $kur_fiyati, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', 'LINEEXTENSIONAMOUNT', $this->xml_ns["cbc"]);
+                    //USD KUR MAL HİZMET
+
+                    //USD KUR HESAPLANAN GERÇEK KDV
+                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', 0, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', 'ALLOWANCETOTALAMOUNT', $this->xml_ns["cbc"]);
+                    //USD KUR HESAPLANAN GERÇEK KDV
+
+                    //USD KUR HESAPLANAN VERGİLER DAHİL TOPLAM TUTAR
+                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', ($fatura_genel_toplam * $kur_fiyati), $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', 'TAXINCLUSIVEAMOUNT', $this->xml_ns["cbc"]);
+                    //USD KUR HESAPLANAN VERGİLER DAHİL TOPLAM TUTAR
+
+                    //USD KUR ÖDENECEK TOPLAM TUTAR
+                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', ($fatura_genel_toplam * $kur_fiyati), $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', 'PAYABLEAMOUNT', $this->xml_ns["cbc"]);
+                    //USD KUR ÖDENECEK TOPLAM TUTAR
+
+                    //USD KUR HESAPLANAN GERÇEK KDV
+                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', $fatura_toplam_kdv_tutar * $kur_fiyati, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentTypeCode', '0015', $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', $fatura_kdv_orani, $this->xml_ns["cbc"]);
+                    //USD KUR HESAPLANAN GERÇEK KDV
+
+                }
 
                 $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
                 $additional_document_reference->addChild('ID', $tasarim_dosya_adi, $this->xml_ns["cbc"]);
@@ -126,42 +242,6 @@
 
                 if($para_birimi != 'TRY'){
 
-                    //USD KUR MAL HİZMET
-                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                    $additional_document_reference->addChild('ID', $fatura_toplam_tutar * $kur_fiyati, $this->xml_ns["cbc"]);
-                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
-                    $additional_document_reference->addChild('DocumentType', 'LINEEXTENSIONAMOUNT', $this->xml_ns["cbc"]);
-                    //USD KUR MAL HİZMET
-
-                    //USD KUR ÖDENECEK TOPLAM TUTAR
-                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                    $additional_document_reference->addChild('ID', ($fatura_genel_toplam * $kur_fiyati), $this->xml_ns["cbc"]);
-                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
-                    $additional_document_reference->addChild('DocumentType', 'PAYABLEAMOUNT', $this->xml_ns["cbc"]);
-                    //USD KUR ÖDENECEK TOPLAM TUTAR
-
-                    //                    //USD KUR HESAPLANAN GERÇEK KDV
-                    //                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                    //                    $additional_document_reference->addChild('ID', 2, $this->xml_ns["cbc"]);
-                    //                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
-                    //                    $additional_document_reference->addChild('DocumentType', 'ALLOWANCETOTALAMOUNT', $this->xml_ns["cbc"]);
-                    //                    //USD KUR HESAPLANAN GERÇEK KDV
-
-                    //USD KUR HESAPLANAN VERGİLER DAHİL TOPLAM TUTAR
-                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                    $additional_document_reference->addChild('ID', ($fatura_genel_toplam * $kur_fiyati), $this->xml_ns["cbc"]);
-                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
-                    $additional_document_reference->addChild('DocumentType', 'TAXINCLUSIVEAMOUNT', $this->xml_ns["cbc"]);
-                    //USD KUR HESAPLANAN VERGİLER DAHİL TOPLAM TUTAR
-
-                    //USD KUR HESAPLANAN GERÇEK KDV
-                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                    $additional_document_reference->addChild('ID', $fatura_toplam_kdv_tutar * $kur_fiyati, $this->xml_ns["cbc"]);
-                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
-                    $additional_document_reference->addChild('DocumentTypeCode', '0015', $this->xml_ns["cbc"]);
-                    $additional_document_reference->addChild('DocumentType', $fatura_kdv_orani, $this->xml_ns["cbc"]);
-                    //USD KUR HESAPLANAN GERÇEK KDV
-
                     $PricingExchangeRat = $fatura_xml->addChild('PricingExchangeRate', null, $this->xml_ns['cac']);
 
                     $SourceCurrencyCode = $PricingExchangeRat->addChild('SourceCurrencyCode', $para_birimi, $this->xml_ns['cbc']);
@@ -177,6 +257,7 @@
                     $TargetCurrencyCode->addAttribute('listVersionID', '2001');
 
                     $PricingExchangeRat->addChild('CalculationRate', $kur_fiyati, $this->xml_ns['cbc']);
+
                 }
 
                 $TaxTotal  = $fatura_xml->addChild('TaxTotal', null, $this->xml_ns['cac']);
@@ -239,6 +320,7 @@
                         $LineExtensionAmount->addAttribute('currencyID', $para_birimi);
 
                         if(!empty($urun_indirim_tutari) and $urun_indirim_tutari > 0){
+
                             $AllowanceCharge = $InvoiceLine->addChild('AllowanceCharge', null, $this->xml_ns['cac']);
                             $AllowanceCharge->addChild('ChargeIndicator', 'false', $this->xml_ns['cbc']);
                             $AllowanceCharge->addChild('AllowanceChargeReason', '%'.$urun_indirim_orani, $this->xml_ns['cbc']);
@@ -249,6 +331,7 @@
 
                             $BaseAmount = $AllowanceCharge->addChild('BaseAmount', '1000', $this->xml_ns['cbc']);
                             $BaseAmount->addAttribute('currencyID', $para_birimi);
+
                         }
 
                         $TaxTotal = $InvoiceLine->addChild('TaxTotal', null, $this->xml_ns['cac']);
@@ -274,7 +357,7 @@
                         }
 
                         $TaxScheme = $TaxCategory->addChild('TaxScheme', null, $this->xml_ns['cac']);
-                        $TaxScheme->addChild('Name', 'KDV', $this->xml_ns['cbc']);
+                        $TaxScheme->addChild('Name', 'KDV GERÇEK', $this->xml_ns['cbc']);
                         $TaxScheme->addChild('TaxTypeCode', '0015', $this->xml_ns['cbc']);
 
                         $Item = $InvoiceLine->addChild('Item', null, $this->xml_ns['cac']);

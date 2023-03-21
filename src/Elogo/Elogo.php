@@ -173,6 +173,38 @@
 
         }
 
+        public function musteri_gib_sorgula($sorgulama_turu = '0', $tcn_or_vkn){
+
+            $result = $this->client->GetValidateGIBUser([
+                'sessionId' => $this->session_id,
+                'paramList' => [
+                    'VKN='.$tcn_or_vkn,
+                    'DOCUMENTTYPE='.$sorgulama_turu,
+                ],
+            ]);
+
+            if(property_exists($result, 'GetValidateGIBUserResult')){
+                if($result->GetValidateGIBUserResult->resultCode == 1){
+                    return $result;
+                }
+                else{
+                    throw new ElogoHata($result->CheckGibUserResult->resultMsg, $result->CheckGibUserResult->resultCode);
+                }
+            }
+            else{
+                throw new ElogoHata("E-Logo cevap veremedi.", 0);
+            }
+
+        }
+
+        public function musteri_efatura_sorgu($tcn_or_vkn){
+            return $this->musteri_gib_sorgula(0, $tcn_or_vkn);
+        }
+
+        public function musteri_earsiv_sorgu($tcn_or_vkn){
+            return $this->musteri_gib_sorgula(1, $tcn_or_vkn);
+        }
+
         /**
          * @param $fatura_turu
          * @param $zip_data

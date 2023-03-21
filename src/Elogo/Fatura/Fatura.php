@@ -9,6 +9,7 @@
 
         public $fatura_no;
         public $fatura_ettn;
+        public $fatura_senaryo;
         public $fatura_turu;
         public $fatura_tarihi;
         public $fatura_sevk_tarihi;
@@ -199,7 +200,9 @@
             "YER",
             "ZMK",
         ];
-        private $fatura_turu_degerleri = ['SATIS', 'TICARIFATURA', 'EARSIVFATURA', 'TEMELFATURA', 'IHRACAT', 'KAMU', 'HALFATURA', 'YOLCUBERABER'];
+        private $fatura_senaryo_degerleri = ['TICARIFATURA', 'EARSIVFATURA', 'TEMELFATURA', 'IHRACAT', 'KAMU', 'HALFATURA', 'YOLCUBERABER'];
+        private $fatura_turu_degerleri = ['SATIS', 'IADE', 'TEVKIFATIADE', 'IHTIYACKAYITLI', 'ISTISNA', 'OZELMATRAH', 'TEVKIFAT', 'SGK', 'KONAKLAMAVERGISI'];
+        private $fatura_belge_degerleri = ['EINVOICE', 'APPLICATIONRESPONSE', 'ENVELOPE', 'EARCHIVE', 'CANCELEARCHIVEINVOICE', 'DESPATCHADVICE', 'DESPATCHADVICEENVELOPE', 'RECEIPTADVICE', 'RECEIPTADVICEENVELOPE', 'CANCELTAXFREEINVOICEBYUUID', 'OKCREPORT'];
         private $invoce_prefix = 'HSN';
         private $kdv_muhafiyet_kodulari = [
             201,
@@ -252,6 +255,7 @@
          */
         public function setFaturaNo($fatura_no){
             $this->fatura_no = $fatura_no;
+            return $this;
         }
 
         /**
@@ -266,6 +270,22 @@
          */
         public function setFaturaEttn($fatura_ettn){
             $this->fatura_ettn = $fatura_ettn;
+            return $this;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getFaturaSenaryo(){
+            return $this->fatura_senaryo;
+        }
+
+        /**
+         * @param mixed $fatura_senaryo
+         */
+        public function setFaturaSenaryo($fatura_senaryo){
+            $this->fatura_senaryo = $fatura_senaryo;
+            return $this;
         }
 
         /**
@@ -280,6 +300,7 @@
          */
         public function setFaturaTuru($fatura_turu){
             $this->fatura_turu = $fatura_turu;
+            return $this;
         }
 
         /**
@@ -294,6 +315,7 @@
          */
         public function setFaturaTarihi($fatura_tarihi){
             $this->fatura_tarihi = $fatura_tarihi;
+            return $this;
         }
 
         /**
@@ -308,6 +330,7 @@
          */
         public function setFaturaSevkTarihi($fatura_sevk_tarihi){
             $this->fatura_sevk_tarihi = $fatura_sevk_tarihi;
+            return $this;
         }
 
         /**
@@ -322,6 +345,7 @@
          */
         public function setFaturaVadeTarihi($fatura_vade_tarihi){
             $this->fatura_vade_tarihi = $fatura_vade_tarihi;
+            return $this;
         }
 
         /**
@@ -336,6 +360,7 @@
          */
         public function setFaturaEarsivTasarimDosyasi($fatura_earsiv_tasarim_dosyasi){
             $this->fatura_earsiv_tasarim_dosyasi = $fatura_earsiv_tasarim_dosyasi;
+            return $this;
         }
 
         /**
@@ -350,6 +375,7 @@
          */
         public function setFaturaEfaturaTasarimDosyasi($fatura_efatura_tasarim_dosyasi){
             $this->fatura_efatura_tasarim_dosyasi = $fatura_efatura_tasarim_dosyasi;
+            return $this;
         }
 
         /**
@@ -364,6 +390,7 @@
          */
         public function setKdvOrani($kdv_orani){
             $this->kdv_orani = $kdv_orani;
+            return $this;
         }
 
         /**
@@ -378,6 +405,7 @@
          */
         public function setKdvMuhafiyetKodu($kdv_muhafiyet_kodu){
             $this->kdv_muhafiyet_kodu = $kdv_muhafiyet_kodu;
+            return $this;
         }
 
         /**
@@ -392,6 +420,7 @@
          */
         public function setFaturaKesenFirma($fatura_kesen_firma){
             $this->fatura_kesen_firma = $fatura_kesen_firma;
+            return $this;
         }
 
         /**
@@ -406,6 +435,7 @@
          */
         public function setMusteriFirma($musteri_firma){
             $this->musteri_firma = $musteri_firma;
+            return $this;
         }
 
         /**
@@ -420,6 +450,7 @@
          */
         public function setParaBirimi($para_birimi){
             $this->para_birimi = $para_birimi;
+            return $this;
         }
 
         /**
@@ -434,6 +465,7 @@
          */
         public function setKurFiyati($kur_fiyati){
             $this->kur_fiyati = $kur_fiyati;
+            return $this;
         }
 
         /**
@@ -448,6 +480,7 @@
          */
         public function setGenelIndirimTutari($genel_indirim_tutari){
             $this->genel_indirim_tutari = $genel_indirim_tutari;
+            return $this;
         }
 
         /**
@@ -462,6 +495,7 @@
          */
         public function setOzelParametreler($ozel_parametreler){
             $this->ozel_parametreler = $ozel_parametreler;
+            return $this;
         }
 
         /**
@@ -495,6 +529,7 @@
          */
         public function setUrunler($urunler){
             $this->urunler = $urunler;
+            return $this;
         }
 
         /**
@@ -509,6 +544,7 @@
          */
         public function setVarsayilanEarsivTasarimDosyasi(string $varsayilan_earsiv_tasarim_dosyasi){
             $this->varsayilan_earsiv_tasarim_dosyasi = $varsayilan_earsiv_tasarim_dosyasi;
+            return $this;
         }
 
         /**
@@ -523,6 +559,7 @@
          */
         public function setVarsayilanEfaturaTasarimDosyasi(string $varsayilan_efatura_tasarim_dosyasi){
             $this->varsayilan_efatura_tasarim_dosyasi = $varsayilan_efatura_tasarim_dosyasi;
+            return $this;
         }
 
         public function create_invoice_number($prefix = null, $number = 0){
@@ -561,6 +598,13 @@
 
             if(empty($this->fatura_ettn)){
                 throw new ElogoHata("Fatura Ettn Zorunludur");
+            }
+
+            if(empty($this->fatura_senaryo)){
+                throw new ElogoHata("Fatura Senaryo Zorunludur");
+            }
+            else if(!empty($this->fatura_senaryo) and !in_array($this->fatura_senaryo, $this->fatura_senaryo_degerleri)){
+                throw new ElogoHata("Fatura Senaryo Değeri Yanlıştır. Şu Değerlerden Biri Olmalı. ".implode(', ', $this->fatura_senaryo_degerleri));
             }
 
             if(empty($this->fatura_turu)){
