@@ -160,6 +160,8 @@
                     $tasarim_dosya_adi_uzantili = $tasarim_adi['basename'];
                 }
 
+                print_r($fatura_tasarimi_yolu);
+
                 $fatura_xml       = new \SimpleXMLElement($xml_string);
                 $this->fatura_xml = $fatura_xml;
 
@@ -173,8 +175,6 @@
                 $fatura_xml->addChild('IssueTime', date('H:i:s'), $this->xml_ns['cbc']);
                 $fatura_xml->addChild('InvoiceTypeCode', $fatura_turu, $this->xml_ns['cbc']);
                 $fatura_xml->addChild('Note', $fatura_notu, $this->xml_ns['cbc']);
-
-                $this->ozel_paremetre($this->fatura->getOzelParametreler());
 
                 $DocumentCurrencyCode = $fatura_xml->addChild('DocumentCurrencyCode', $para_birimi, $this->xml_ns['cbc']);
                 $DocumentCurrencyCode->addAttribute('listAgencyName', 'United Nations Economic Commission for Europe');
@@ -229,6 +229,8 @@
                 $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
                 $additional_document_reference->addChild('ID', $tasarim_dosya_adi, $this->xml_ns["cbc"]);
                 $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+
+                $this->ozel_paremetre($this->fatura->getOzelParametreler());
 
                 $attachment                      = $additional_document_reference->addChild('Attachment', null, $this->xml_ns["cac"]);
                 $embedded_document_binary_object = $attachment->addChild('EmbeddedDocumentBinaryObject', $xslt, $this->xml_ns["cbc"]);
@@ -596,7 +598,13 @@
         private function ozel_paremetre($parametreler){
             if($parametreler != null){
                 foreach($parametreler as $kod => $deger){
-                    $this->fatura_xml->addChild($kod, $deger, $this->xml_ns['cbc']);
+
+                    $additional_document_reference = $this->fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', $deger, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $this->fatura->fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', $kod, $this->xml_ns["cbc"]);
+
+//                    $this->fatura_xml->addChild($kod, $deger, $this->xml_ns['cbc']);
                 }
                 return $this->fatura_xml;
             }

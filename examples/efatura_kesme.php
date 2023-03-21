@@ -70,8 +70,8 @@
         //FATURA TUTARLARINI YUKARIDA GİRDİĞİNİZ ÜRÜN VEYA HİZMETLERİNİZE GÖRE OTOMATİK TOPLAMAKTADIR.
         //BU YÖNTEM İLE TUTAR UYUŞMAZLIKLARININ ÖNÜNE GEÇİLMİŞTİR.
 
-        $fatura                 = new Fatura();
-        $fatura_no              = $elogo->fatura_no_olustur();
+        $fatura    = new Fatura();
+        $fatura_no = $elogo->fatura_no_olustur();
 
         //FATURA TASARIMINIZ ÖZEL HAZIRLANMIŞ İSE BURADAN UBL FORMATINDAKİ DOSYANIZA TAM YOLUNU VERMELİSİNİZ.
         //FATURA TASARIMINI ELOGO PANELİNDEN "AYARLAR / TASARIM ARAÇLARI" VEYA "AYARLAR / HAZIR TASARIM ARACI" MENÜSÜNDEN OLUŞTURUP İNDİREBİLİRSİNİZ
@@ -99,7 +99,13 @@
 
         //FATURA TASARIMINIZDA ÖZEL ALANLAR OLABİLİR. BU ÖZEL ALANLARI ELOGO PANELİNDE
         //"AYARLAR / GÖRSEL TASARIM EK ALANLARI" MENÜSÜNDEN EKLEYEBİLİRSİNİZ. FAKAT EKLERKER
-        //XSLT ISMINA <xsl:value-of select="n1:Invoice/cbc:GemiNo" ></xsl:value-of> BU XML KOMUTUNU YAZMALISINIZ.
+        //XSLT ISMINA
+        //        <xsl:for-each select="//n1:Invoice/cac:AdditionalDocumentReference">
+        //            <xsl:if test ="cbc:DocumentType = 'GemiNo'">
+        //                <xsl:value-of select="cbc:ID"/>
+        //            </xsl:if>
+        //        </xsl:for-each>
+        //  BU XML KOMUTUNU YAZMALISINIZ.
         //BU KOMUTTAKİ "GemiNo" KISMI AŞAĞIDAKİ KODDA KULLANACAĞINIZ KISA KOD OLMALIDIR
         //        $parametreler = [
         //            'GemiNo' => 'Hsn123',

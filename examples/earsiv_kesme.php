@@ -99,7 +99,13 @@
 
         //FATURA TASARIMINIZDA ÖZEL ALANLAR OLABİLİR. BU ÖZEL ALANLARI ELOGO PANELİNDE
         //"AYARLAR / GÖRSEL TASARIM EK ALANLARI" MENÜSÜNDEN EKLEYEBİLİRSİNİZ. FAKAT EKLERKER
-        //XSLT ISMINA <xsl:value-of select="n1:Invoice/cbc:GemiNo" ></xsl:value-of> BU XML KOMUTUNU YAZMALISINIZ.
+        //XSLT ISMINA
+        //        <xsl:for-each select="//n1:Invoice/cac:AdditionalDocumentReference">
+        //            <xsl:if test ="cbc:DocumentType = 'GemiNo'">
+        //                <xsl:value-of select="cbc:ID"/>
+        //            </xsl:if>
+        //        </xsl:for-each>
+        //  BU XML KOMUTUNU YAZMALISINIZ.
         //BU KOMUTTAKİ "GemiNo" KISMI AŞAĞIDAKİ KODDA KULLANACAĞINIZ KISA KOD OLMALIDIR
         //        $parametreler = [
         //            'GemiNo' => 'Hsn123',
