@@ -160,8 +160,6 @@
                     $tasarim_dosya_adi_uzantili = $tasarim_adi['basename'];
                 }
 
-                print_r($fatura_tasarimi_yolu);
-
                 $fatura_xml       = new \SimpleXMLElement($xml_string);
                 $this->fatura_xml = $fatura_xml;
 
@@ -184,7 +182,13 @@
 
                 $fatura_xml->addChild('LineCountNumeric', count($urunler), $this->xml_ns['cbc']);
 
-                $xslt = base64_encode(file_get_contents($fatura_tasarimi_yolu));
+
+                if($fatura_tasarimi == 'EARSIVFATURA'){
+                    $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
+                    $additional_document_reference->addChild('ID', 'gonderimSekli', $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('DocumentType', 'ELEKTRONIK', $this->xml_ns["cbc"]);
+                }
 
                 if($para_birimi != 'TRY'){
 
@@ -231,6 +235,8 @@
                 $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
 
                 $this->ozel_paremetre($this->fatura->getOzelParametreler());
+
+                $xslt = base64_encode(file_get_contents($fatura_tasarimi_yolu));
 
                 $attachment                      = $additional_document_reference->addChild('Attachment', null, $this->xml_ns["cac"]);
                 $embedded_document_binary_object = $attachment->addChild('EmbeddedDocumentBinaryObject', $xslt, $this->xml_ns["cbc"]);

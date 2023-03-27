@@ -27,65 +27,21 @@
          */
         public $live_api_url = 'https://pb.elogo.com.tr/PostboxService.svc?singlewsdl';
 
-        /**
-         * @var
-         */
         public $username;
-        /**
-         * @var
-         */
         public $password;
-        /**
-         * @var false|mixed
-         */
         public $test_mode;
-        /**
-         * @var string
-         */
         public $api_url;
-
-        /**
-         * @var \SoapClient
-         */
         public $client;
-        /**
-         * @var
-         */
         public $session_id;
-        /**
-         * @var string
-         */
         public $invoce_prefix = 'HSN';
-
-        /**
-         * @var
-         */
         public $my_company;
-        /**
-         * @var
-         */
         public $customer_company;
-        /**
-         * @var
-         */
         public $fatura;
 
-        /**
-         * @var string
-         */
         public $xml_path = (__DIR__).'/';
-        /**
-         * @var string
-         */
+
         public $zip_path = (__DIR__).'/';
 
-        /**
-         * @param $username
-         * @param $password
-         * @param $test_mode
-         * @throws ElogoHata
-         * @throws \SoapFault
-         */
         function __construct($username, $password, $test_mode = false){
 
             if(class_exists('SoapClient')){
@@ -111,9 +67,6 @@
 
         }
 
-        /**
-         * @return false
-         */
         public function giris_yap(){
 
             $login_class = new ElogoLogin();
@@ -132,18 +85,10 @@
 
         }
 
-        /**
-         * @return mixed
-         */
         public function cikis_yap(){
             return $this->client->Logout(['sessionID' => $this->session_id]);
         }
 
-        /**
-         * @param $tcn_or_vkn
-         * @return mixed
-         * @throws ElogoHata
-         */
         public function musteri_bilgisi_getir($tcn_or_vkn){
 
             $param = null;
@@ -205,12 +150,6 @@
             return $this->musteri_gib_sorgula(1, $tcn_or_vkn);
         }
 
-        /**
-         * @param $fatura_turu
-         * @param $zip_data
-         * @return mixed
-         * @throws ElogoHata
-         */
         public function dokuman_yolla($fatura_turu = 'EINVOICE', $zip_data){
 
             $document    = new ElogoDocumentType();
@@ -250,14 +189,6 @@
 
         }
 
-        /**
-         * @param Fatura $fatura
-         * @param BenimFirmam $benim_firmam
-         * @param MusteriFirmasi $musteri_firmasi
-         * @param $sadece_ubl_getir
-         * @return bool|mixed|string|null
-         * @throws ElogoHata
-         */
         public function efatura_gonder(Fatura $fatura, BenimFirmam $benim_firmam, MusteriFirmasi $musteri_firmasi, $sadece_ubl_getir = false){
             $convert_ubl = new FaturaUbl($fatura, $benim_firmam, $musteri_firmasi);
             $xml         = $convert_ubl->getir_ubl_xml('TICARIFATURA');
@@ -270,14 +201,6 @@
             return $this->dokuman_yolla('EINVOICE', $zip_data);
         }
 
-        /**
-         * @param Fatura $fatura
-         * @param BenimFirmam $benim_firmam
-         * @param MusteriFirmasi $musteri_firmasi
-         * @param $sadece_ubl_getir
-         * @return bool|mixed|string|null
-         * @throws ElogoHata
-         */
         public function earsiv_gonder(Fatura $fatura, BenimFirmam $benim_firmam, MusteriFirmasi $musteri_firmasi, $sadece_ubl_getir = false){
             $convert_ubl = new FaturaUbl($fatura, $benim_firmam, $musteri_firmasi);
             $xml         = $convert_ubl->getir_ubl_xml('EARSIVFATURA');
@@ -290,11 +213,6 @@
             return $this->dokuman_yolla('EARCHIVE', $zip_data);
         }
 
-        /**
-         * @param $prefix
-         * @param $number
-         * @return string
-         */
         public function fatura_no_olustur($prefix = null, $number = 0){
             $prefix = mb_substr($prefix ?? $this->invoce_prefix, 0, 3);
             if($number == 0){
@@ -305,10 +223,6 @@
             }
         }
 
-        /**
-         * @param $xml
-         * @return array
-         */
         private function create_zip($xml = null){
 
             $xml_name = $this->session_id.'-xml.xml';
@@ -331,47 +245,22 @@
 
         }
 
-        /**
-         * @param $baslangic_tarihi
-         * @param $bitis_tarihi
-         * @return mixed
-         */
         public function giden_efaturalar($baslangic_tarihi = null, $bitis_tarihi = null){
             return $this->faturalari_getir('EINVOICE', 'GİDEN', $baslangic_tarihi, $bitis_tarihi);
         }
 
-        /**
-         * @param $baslangic_tarihi
-         * @param $bitis_tarihi
-         * @return mixed
-         */
         public function gelen_efaturalar($baslangic_tarihi = null, $bitis_tarihi = null){
             return $this->faturalari_getir('EINVOICE', 'GELEN', $baslangic_tarihi, $bitis_tarihi);
         }
 
-        /**
-         * @param $baslangic_tarihi
-         * @return mixed
-         */
         public function giden_earsivler($baslangic_tarihi = null){
             return $this->faturalari_getir('EARCHIVE', 'GİDEN', $baslangic_tarihi, $baslangic_tarihi);
         }
 
-        /**
-         * @param $baslangic_tarihi
-         * @return mixed
-         */
         public function gelen_earsivler($baslangic_tarihi = null){
             return $this->faturalari_getir('EARCHIVE', 'GELEN', $baslangic_tarihi, $baslangic_tarihi);
         }
 
-        /**
-         * @param $fatura_turu
-         * @param $gelen_faturalar
-         * @param $baslangic_tarihi
-         * @param $bitis_tarihi
-         * @return mixed
-         */
         public function faturalari_getir($fatura_turu = null, $gelen_faturalar = 'GELEN', $baslangic_tarihi = null, $bitis_tarihi = null){
 
             $baslangic_tarihi = $baslangic_tarihi ?? date('Y-m-d', strtotime('first day of this month'));
@@ -391,33 +280,24 @@
             return $this->client->GetDocumentList($param);
         }
 
-        /**
-         * @param $gelen_faturalar
-         * @param $baslangic_tarihi
-         * @param $bitis_tarihi
-         * @return mixed
-         */
         public function faturalari_getir2($gelen_faturalar = 'RECV', $baslangic_tarihi = null, $bitis_tarihi = null){
-
-            $baslangic_tarihi = $baslangic_tarihi ?? date('Y-m-d', strtotime('first day of this month'));
-            $bitis_tarihi     = $bitis_tarihi ?? date('Y-m-d', strtotime('last day of this month'));
-
-            $param = [
-                'sessionID' => $this->session_id,
-                'beginDate' => $baslangic_tarihi,
-                'endDate'   => $bitis_tarihi,
-                'opType'    => $gelen_faturalar,
-                'dateBy'    => 'byCREATED',
-            ];
-
-            return $this->client->GetInvoiceList($param);
+//            $baslangic_tarihi = $baslangic_tarihi ?? date('Y-m-d', strtotime('first day of this month'));
+//            $bitis_tarihi     = $bitis_tarihi ?? date('Y-m-d', strtotime('last day of this month'));
+//
+//            $param = [
+//                'sessionID' => $this->session_id,
+//                'beginDate' => $baslangic_tarihi,
+//                'endDate'   => $bitis_tarihi,
+//                'opType'    => $gelen_faturalar,
+//                'dateBy'    => 'byCREATED',
+//            ];
+//
+//
+//            $get =  $this->client->getEnvelopeList($param);
+//            print_r($this->client);
+//            return $get;
         }
 
-
-        /**
-         * @param $fatura_uid
-         * @return mixed
-         */
         public function fatura_durum_bilgisi_getir($fatura_uid = ''){
 
             $params = [
@@ -429,30 +309,14 @@
 
         }
 
-        /**
-         * @param $fatura_uuid
-         * @param $format
-         * @return mixed
-         */
         public function efatura_zip_ciktisi_getir($fatura_uuid = '', $format = 'PDF'){
             return $this->fatura_ciktisi_getir($fatura_uuid, 'EINVOICE', $format);
         }
 
-        /**
-         * @param $fatura_uuid
-         * @param $format
-         * @return mixed
-         */
         public function earsiv_zip_ciktisi_getir($fatura_uuid = '', $format = 'PDF'){
             return $this->fatura_ciktisi_getir($fatura_uuid, 'EARCHIVE', $format);
         }
 
-        /**
-         * @param $fatura_uuid
-         * @param $fatura_turu
-         * @param $format
-         * @return mixed
-         */
         public function fatura_ciktisi_getir($fatura_uuid = '', $fatura_turu = 'EINVOICE', $format = 'PDF'){
 
             $params = [
@@ -466,16 +330,17 @@
 
         }
 
-        public function earsiv_iptal_et(){
+        public function earsiv_iptal_et($ettn){
 
             $params = [
                 'sessionID' => $this->session_id,
-                'uuid'      => $fatura_uuid,
-                'docType'   => $fatura_turu,
-                'dataType'  => $format,
+                'paramList' => [
+                    'DOCUMENTTYPE=CANCELEARCHIVEINVOICE',
+                    'UUID='.$ettn,
+                ],
             ];
 
-            return $this->client->GetDocumentData($params);
+            return $this->client->SendDocument($params);
 
         }
     }
