@@ -25,6 +25,7 @@
         public $genel_indirim_tutari;
         public $ozel_parametreler;
         public $urunler;
+        public $fatura_notu;
 
         public $fatura_toplam_tutar = 0;
         public $fatura_toplam_kdv_tutar = 0;
@@ -450,6 +451,21 @@
          */
         public function setParaBirimi($para_birimi){
             $this->para_birimi = $para_birimi;
+            return $this;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getFaturaNotu(){
+            return $this->fatura_notu;
+        }
+
+        /**
+         * @param mixed $para_birimi
+         */
+        public function setFaturaNotu($fatura_notu){
+            $this->fatura_notu = $fatura_notu;
             return $this;
         }
 
