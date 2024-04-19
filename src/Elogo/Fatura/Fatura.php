@@ -655,12 +655,15 @@
                 throw new ElogoHata("Fatura Kdv Muhafiyet Kodu Değeri Yanlıştır. Şu Değerlerden Biri Olmalı. ".implode(', ', $this->kdv_muhafiyet_kodulari));
             }
 
-            if(empty($this->kdv_orani)){
-                throw new ElogoHata("Fatura Kdv Oranı Zorunludur");
+            if(empty($this->kdv_muhafiyet_kodu)){
+                 if(empty($this->kdv_orani)){
+                    throw new ElogoHata("Fatura Kdv Oranı Zorunludur");
+                 }
+                 else if(!is_numeric($this->kdv_orani)){
+                    throw new ElogoHata("Fatura Kdv Oranı Sadece sayı içermelidir. ÖRN. 18");
+                 }
             }
-            else if(!is_numeric($this->kdv_orani)){
-                throw new ElogoHata("Fatura Kdv Oranı Sadece sayı içermelidir. ÖRN. 18");
-            }
+           
 
             if(empty($this->fatura_kesen_firma)){
                 throw new ElogoHata("Fatura Kesen Firma Bilgisi Zorunludur");
