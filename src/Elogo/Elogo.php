@@ -118,7 +118,7 @@
 
         }
 
-        public function musteri_gib_sorgula($sorgulama_turu = '0', $tcn_or_vkn){
+        public function musteri_gib_sorgula($tcn_or_vkn, $sorgulama_turu = '0'){
 
             $result = $this->client->GetValidateGIBUser([
                 'sessionId' => $this->session_id,
@@ -143,14 +143,14 @@
         }
 
         public function musteri_efatura_sorgu($tcn_or_vkn){
-            return $this->musteri_gib_sorgula(0, $tcn_or_vkn);
+            return $this->musteri_gib_sorgula($tcn_or_vkn, 0);
         }
 
         public function musteri_earsiv_sorgu($tcn_or_vkn){
-            return $this->musteri_gib_sorgula(1, $tcn_or_vkn);
+            return $this->musteri_gib_sorgula($tcn_or_vkn, 1);
         }
 
-        public function dokuman_yolla($fatura_turu = 'EINVOICE', $zip_data){
+        public function dokuman_yolla($zip_data, $fatura_turu = 'EINVOICE'){
 
             $document    = new ElogoDocumentType();
             $binary_data = new ElogoBase64BinaryData();
@@ -198,7 +198,7 @@
             }
 
             $zip_data = $this->create_zip($xml);
-            return $this->dokuman_yolla('EINVOICE', $zip_data);
+            return $this->dokuman_yolla($zip_data, 'EINVOICE');
         }
 
         public function earsiv_gonder(Fatura $fatura, BenimFirmam $benim_firmam, MusteriFirmasi $musteri_firmasi, $sadece_ubl_getir = false){
@@ -210,7 +210,7 @@
             }
 
             $zip_data = $this->create_zip($xml);
-            return $this->dokuman_yolla('EARCHIVE', $zip_data);
+            return $this->dokuman_yolla($zip_data, 'EARCHIVE');
         }
 
         public function fatura_no_olustur($prefix = null, $number = 0){
