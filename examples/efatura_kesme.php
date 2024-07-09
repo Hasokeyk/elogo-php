@@ -24,17 +24,17 @@
             $benim_firmam->setFirmaAdi('Hasan Yüksektepe');
             $benim_firmam->setTcKimlikNo('XXXXXXXXXXX');
             //        $benim_firmam->setVergiNo('XXXXXXXXXXX');
-            $benim_firmam->setMersisNo('XXXXXXXXXXX');
-            $benim_firmam->setTelefon('XXXXXXXXXXX');
+//            $benim_firmam->setMersisNo('XXXXXXXXXXX');
+//            $benim_firmam->setTelefon('XXXXXXXXXXX');
             $benim_firmam->setEmail('info@hayatikodla.net');
             $benim_firmam->setWebsitesi('hayatikodla.net');
             $benim_firmam->setVergiDairesi('HAYATIKODLA');
             $benim_firmam->setAcikAdres('TAM ADRES BİLGİSİ');
             $benim_firmam->setIl('İstanbul');
             $benim_firmam->setIlce('Sancaktepe');
-            $benim_firmam->setBinaNo('XXX');
-            $benim_firmam->setBinaAdi('XXX');
-            $benim_firmam->setPostaKodu('XXXXXX');
+//            $benim_firmam->setBinaNo('XXX');
+//            $benim_firmam->setBinaAdi('XXX');
+//            $benim_firmam->setPostaKodu('XXXXXX');
             $benim_firmam->setUlke('Türkiye');
             $benim_firmam->setUlkeKodu('TR');
 

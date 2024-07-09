@@ -366,13 +366,13 @@
                 throw new ElogoHata("Açık Adres Zorunludur");
             }
 
-            if(empty($this->bina_adi)){
-                throw new ElogoHata("Bina Adı Zorunludur");
-            }
-
-            if(empty($this->bina_no)){
-                throw new ElogoHata("Bina No Zorunludur");
-            }
+//            if(empty($this->bina_adi)){
+//                throw new ElogoHata("Bina Adı Zorunludur");
+//            }
+//
+//            if(empty($this->bina_no)){
+//                throw new ElogoHata("Bina No Zorunludur");
+//            }
 
             if(empty($this->il)){
                 throw new ElogoHata("İl Zorunludur");
@@ -382,9 +382,9 @@
                 throw new ElogoHata("İlce Zorunludur");
             }
 
-            if(empty($this->posta_kodu)){
-                throw new ElogoHata("Posta Kodu Zorunludur");
-            }
+//            if(empty($this->posta_kodu)){
+//                throw new ElogoHata("Posta Kodu Zorunludur");
+//            }
 
             if(empty($this->ulke)){
                 throw new ElogoHata("Ülke Zorunludur");
