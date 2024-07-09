@@ -64,7 +64,7 @@
             $fatura_satir = new FaturaSatir();
 
             $fatura_satir->setYeniUrun()->setUrunAdi('Yazılım')->setUrunAciklama('Ürün 1 açıklama')->setUrunAdet(2)->setUrunBirimFiyat(500)->setUrunIndirimTutari(500);
-            $fatura_satir->setYeniUrun()->setUrunAdi('Yazılım2')->setUrunAciklama('Ürün 2 açıklama')->setUrunAdet(2)->setUrunBirimFiyat(1500);
+            $fatura_satir->setYeniUrun()->setUrunAdi('Yazılım2')->setUrunAciklama('Ürün 2 açıklama')->setUrunAdet(2)->setUrunBirimFiyat(1500)->setUrunKdvOrani();
 
             //FATURA BİLGİLERİNİ AŞAĞIDAKİ GİBİ GİRİNİZ
             //FATURA TUTARLARINI YUKARIDA GİRDİĞİNİZ ÜRÜN VEYA HİZMETLERİNİZE GÖRE OTOMATİK TOPLAMAKTADIR.
@@ -85,7 +85,6 @@
             $fatura->setFaturaEttn($elogo_login->sessionID);
             $fatura->setFaturaTuru('TICARIFATURA'); //TICARIFATURA | SATIS
             $fatura->setFaturaTarihi('2023-02-26');
-            $fatura->setFaturano
 
             $fatura->setKdvOrani(18);
             //    $fatura->setKdvMuhafiyetKodu('325');
