@@ -25,6 +25,7 @@
         public $genel_indirim_tutari;
         public $ozel_parametreler;
         public $urunler;
+        public $fatura_notu;
 
         public $fatura_toplam_tutar = 0;
         public $fatura_toplam_kdv_tutar = 0;
@@ -456,6 +457,21 @@
         /**
          * @return mixed
          */
+        public function getFaturaNotu(){
+            return $this->fatura_notu;
+        }
+
+        /**
+         * @param mixed $para_birimi
+         */
+        public function setFaturaNotu($fatura_notu){
+            $this->fatura_notu = $fatura_notu;
+            return $this;
+        }
+
+        /**
+         * @return mixed
+         */
         public function getKurFiyati(){
             return $this->kur_fiyati;
         }
@@ -639,12 +655,15 @@
                 throw new ElogoHata("Fatura Kdv Muhafiyet Kodu Değeri Yanlıştır. Şu Değerlerden Biri Olmalı. ".implode(', ', $this->kdv_muhafiyet_kodulari));
             }
 
-            if(empty($this->kdv_orani)){
-                throw new ElogoHata("Fatura Kdv Oranı Zorunludur");
+            if(empty($this->kdv_muhafiyet_kodu)){
+                 if(empty($this->kdv_orani)){
+                    throw new ElogoHata("Fatura Kdv Oranı Zorunludur");
+                 }
+                 else if(!is_numeric($this->kdv_orani)){
+                    throw new ElogoHata("Fatura Kdv Oranı Sadece sayı içermelidir. ÖRN. 18");
+                 }
             }
-            else if(!is_numeric($this->kdv_orani)){
-                throw new ElogoHata("Fatura Kdv Oranı Sadece sayı içermelidir. ÖRN. 18");
-            }
+           
 
             if(empty($this->fatura_kesen_firma)){
                 throw new ElogoHata("Fatura Kesen Firma Bilgisi Zorunludur");

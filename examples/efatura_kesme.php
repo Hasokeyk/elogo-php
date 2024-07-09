@@ -85,6 +85,7 @@
             $fatura->setFaturaEttn($elogo_login->sessionID);
             $fatura->setFaturaTuru('TICARIFATURA'); //TICARIFATURA | SATIS
             $fatura->setFaturaTarihi('2023-02-26');
+            $fatura->setFaturano
 
             $fatura->setKdvOrani(18);
             //    $fatura->setKdvMuhafiyetKodu('325');
