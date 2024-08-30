@@ -1,14 +1,15 @@
 <?php
 
-    namespace Hasokeyk\Elogo;
+namespace Hasokeyk\Elogo;
 
-    use Exception;
-    use Throwable;
+use Exception;
 
-    class ElogoHata extends Exception{
-
-        public function __destruct(){
-            exit;
-        }
-
+class ElogoHata extends Exception
+{
+    // Özelleştirilmiş hata mesajları ve hata kodları ekleyebilirsiniz
+    public function __construct($message = "", $code = 0, Exception $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
     }
+}
+// ELOGO tarafından gelen hataları kontrol edilebilir hale getirir.
