@@ -194,35 +194,35 @@
 
                     //USD KUR MAL HİZMET
                     $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                    $additional_document_reference->addChild('ID', $fatura_toplam_tutar * $kur_fiyati, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('ID', number_format($fatura_toplam_tutar * $kur_fiyati, 2, '.', ''), $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('DocumentType', 'LINEEXTENSIONAMOUNT', $this->xml_ns["cbc"]);
                     //USD KUR MAL HİZMET
 
                     //USD KUR HESAPLANAN GERÇEK KDV
                     $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                    $additional_document_reference->addChild('ID', 0, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('ID', number_format($fatura_toplam_kdv_tutar * $kur_fiyati, 2, '.', ''), $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('DocumentType', 'ALLOWANCETOTALAMOUNT', $this->xml_ns["cbc"]);
                     //USD KUR HESAPLANAN GERÇEK KDV
 
                     //USD KUR HESAPLANAN VERGİLER DAHİL TOPLAM TUTAR
                     $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                    $additional_document_reference->addChild('ID', ($fatura_genel_toplam * $kur_fiyati), $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('ID', number_format($fatura_genel_toplam * $kur_fiyati, 2, '.', ''), $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('DocumentType', 'TAXINCLUSIVEAMOUNT', $this->xml_ns["cbc"]);
                     //USD KUR HESAPLANAN VERGİLER DAHİL TOPLAM TUTAR
 
                     //USD KUR ÖDENECEK TOPLAM TUTAR
                     $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                    $additional_document_reference->addChild('ID', ($fatura_genel_toplam * $kur_fiyati), $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('ID', number_format($fatura_genel_toplam * $kur_fiyati, 2, '.', ''), $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('DocumentType', 'PAYABLEAMOUNT', $this->xml_ns["cbc"]);
                     //USD KUR ÖDENECEK TOPLAM TUTAR
 
                     //USD KUR HESAPLANAN GERÇEK KDV
                     $additional_document_reference = $fatura_xml->addChild('AdditionalDocumentReference', null, $this->xml_ns['cac']);
-                    $additional_document_reference->addChild('ID', $fatura_toplam_kdv_tutar * $kur_fiyati, $this->xml_ns["cbc"]);
+                    $additional_document_reference->addChild('ID', number_format($fatura_toplam_kdv_tutar * $kur_fiyati, 2, '.', ''), $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('IssueDate', $fatura_tarihi, $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('DocumentTypeCode', '0015', $this->xml_ns["cbc"]);
                     $additional_document_reference->addChild('DocumentType', $fatura_kdv_orani, $this->xml_ns["cbc"]);
@@ -269,14 +269,14 @@
                 }
 
                 $TaxTotal  = $fatura_xml->addChild('TaxTotal', null, $this->xml_ns['cac']);
-                $TaxAmount = $TaxTotal->addChild('TaxAmount', $fatura_toplam_kdv_tutar, $this->xml_ns['cbc']);
+                $TaxAmount = $TaxTotal->addChild('TaxAmount', number_format($fatura_toplam_kdv_tutar, 2, '.', ''), $this->xml_ns['cbc']);
                 $TaxAmount->addAttribute('currencyID', $para_birimi);
 
                 $TaxSubtotal   = $TaxTotal->addChild('TaxSubtotal', null, $this->xml_ns['cac']);
-                $TaxableAmount = $TaxSubtotal->addChild('TaxableAmount', $fatura_toplam_tutar, $this->xml_ns['cbc']);
+                $TaxableAmount = $TaxSubtotal->addChild('TaxableAmount', number_format($fatura_toplam_tutar, 2, '.', ''), $this->xml_ns['cbc']);
                 $TaxableAmount->addAttribute('currencyID', $para_birimi);
 
-                $TaxAmount2 = $TaxSubtotal->addChild('TaxAmount', $fatura_toplam_kdv_tutar, $this->xml_ns['cbc']);
+                $TaxAmount2 = $TaxSubtotal->addChild('TaxAmount', number_format($fatura_toplam_kdv_tutar, 2, '.', ''), $this->xml_ns['cbc']);
                 $TaxAmount2->addAttribute('currencyID', $para_birimi);
 
                 $TaxSubtotal->addChild('Percent', $fatura_kdv_orani, $this->xml_ns['cbc']);
@@ -291,17 +291,17 @@
                 $TaxScheme->addChild('TaxTypeCode', '0015', $this->xml_ns['cbc']);
 
                 $LegalMonetaryTotal  = $fatura_xml->addChild('LegalMonetaryTotal', null, $this->xml_ns['cac']);
-                $LineExtensionAmount = $LegalMonetaryTotal->addChild('LineExtensionAmount', $fatura_toplam_tutar, $this->xml_ns['cbc']);
+                $LineExtensionAmount = $LegalMonetaryTotal->addChild('LineExtensionAmount', number_format($fatura_toplam_tutar, 2, '.', ''), $this->xml_ns['cbc']);
                 $LineExtensionAmount->addAttribute('currencyID', $para_birimi);
-                $TaxExclusiveAmount = $LegalMonetaryTotal->addChild('TaxExclusiveAmount', $fatura_toplam_tutar, $this->xml_ns['cbc']);
+                $TaxExclusiveAmount = $LegalMonetaryTotal->addChild('TaxExclusiveAmount', number_format($fatura_toplam_tutar, 2, '.', ''), $this->xml_ns['cbc']);
                 $TaxExclusiveAmount->addAttribute('currencyID', $para_birimi);
-                $TaxInclusiveAmount = $LegalMonetaryTotal->addChild('TaxInclusiveAmount', $fatura_genel_toplam, $this->xml_ns['cbc']);
+                $TaxInclusiveAmount = $LegalMonetaryTotal->addChild('TaxInclusiveAmount', number_format($fatura_genel_toplam, 2, '.', ''), $this->xml_ns['cbc']);
                 $TaxInclusiveAmount->addAttribute('currencyID', $para_birimi);
-                $AllowanceTotalAmount = $LegalMonetaryTotal->addChild('AllowanceTotalAmount', $fatura_indirim_tutari, $this->xml_ns['cbc']);
+                $AllowanceTotalAmount = $LegalMonetaryTotal->addChild('AllowanceTotalAmount', number_format($fatura_indirim_tutari, 2, '.', ''), $this->xml_ns['cbc']);
                 $AllowanceTotalAmount->addAttribute('currencyID', $para_birimi);
                 $AllowanceTotalAmount = $LegalMonetaryTotal->addChild('ChargeTotalAmount', '0', $this->xml_ns['cbc']);
                 $AllowanceTotalAmount->addAttribute('currencyID', $para_birimi);
-                $PayableAmount = $LegalMonetaryTotal->addChild('PayableAmount', $fatura_genel_toplam, $this->xml_ns['cbc']);
+                $PayableAmount = $LegalMonetaryTotal->addChild('PayableAmount', number_format($fatura_genel_toplam, 2, '.', ''), $this->xml_ns['cbc']);
                 $PayableAmount->addAttribute('currencyID', $para_birimi);
 
                 if($urunler != null){
@@ -312,7 +312,7 @@
                         $urun_indirim_tutari = $urun['urun_indirim_tutari'] ?? 0;
                         $urun_birim_fiyat    = $urun['urun_birim_fiyat'];
                         $urun_kdv_orani      = $urun['urun_kdv_orani'] ?? $fatura_kdv_orani;
-                        $urun_kdv_tutar      = (($urun['urun_birim_fiyat'] * $urun_adet) - $urun_indirim_tutari) * ($urun_kdv_orani / 100);
+                        $urun_kdv_tutar      = number_format((($urun['urun_birim_fiyat'] * $urun_adet) - $urun_indirim_tutari) * ($urun_kdv_orani / 100), 2, '.', '');
                         $urun_indirim_orani  = number_format(($urun_indirim_tutari * 100) / ($urun['urun_birim_fiyat'] * $urun_adet), 0);
                         $urun_aciklama       = $urun['urun_aciklama'] ?? '';
                         $urun_notu           = $urun['urun_not'] ?? '';
@@ -324,7 +324,7 @@
                         $InvoicedQuantity = $InvoiceLine->addChild('InvoicedQuantity', $urun_adet, $this->xml_ns['cbc']);
                         $InvoicedQuantity->addAttribute('unitCode', 'NIU');
 
-                        $LineExtensionAmount = $InvoiceLine->addChild('LineExtensionAmount', ($urun_birim_fiyat * $urun_adet) - $urun_indirim_tutari, $this->xml_ns['cbc']);
+                        $LineExtensionAmount = $InvoiceLine->addChild('LineExtensionAmount', number_format(($urun_birim_fiyat * $urun_adet) - $urun_indirim_tutari, 2, '.', ''), $this->xml_ns['cbc']);
                         $LineExtensionAmount->addAttribute('currencyID', $para_birimi);
 
                         if(!empty($urun_indirim_tutari) and $urun_indirim_tutari > 0){
@@ -332,9 +332,9 @@
                             $AllowanceCharge = $InvoiceLine->addChild('AllowanceCharge', null, $this->xml_ns['cac']);
                             $AllowanceCharge->addChild('ChargeIndicator', 'false', $this->xml_ns['cbc']);
                             $AllowanceCharge->addChild('AllowanceChargeReason', '%'.$urun_indirim_orani, $this->xml_ns['cbc']);
-                            $AllowanceCharge->addChild('MultiplierFactorNumeric', ($urun_indirim_orani / 100), $this->xml_ns['cbc']);
+                            $AllowanceCharge->addChild('MultiplierFactorNumeric', number_format(($urun_indirim_orani / 100), 2, '.', ''), $this->xml_ns['cbc']);
 
-                            $Amount = $AllowanceCharge->addChild('Amount', $urun_indirim_tutari, $this->xml_ns['cbc']);
+                            $Amount = $AllowanceCharge->addChild('Amount', number_format($urun_indirim_tutari, 2, '.', ''), $this->xml_ns['cbc']);
                             $Amount->addAttribute('currencyID', $para_birimi);
 
                             $BaseAmount = $AllowanceCharge->addChild('BaseAmount', '1000', $this->xml_ns['cbc']);
@@ -344,15 +344,15 @@
 
                         $TaxTotal = $InvoiceLine->addChild('TaxTotal', null, $this->xml_ns['cac']);
 
-                        $TaxAmount = $TaxTotal->addChild('TaxAmount', $urun_kdv_tutar, $this->xml_ns['cbc']);
+                        $TaxAmount = $TaxTotal->addChild('TaxAmount', number_format($urun_kdv_tutar, 2, '.', ''), $this->xml_ns['cbc']);
                         $TaxAmount->addAttribute('currencyID', $para_birimi);
 
                         $TaxSubtotal = $TaxTotal->addChild('TaxSubtotal', null, $this->xml_ns['cac']);
 
-                        $TaxableAmount = $TaxSubtotal->addChild('TaxableAmount', ($urun_birim_fiyat * $urun_adet) - $urun_indirim_tutari, $this->xml_ns['cbc']);
+                        $TaxableAmount = $TaxSubtotal->addChild('TaxableAmount', number_format(($urun_birim_fiyat * $urun_adet) - $urun_indirim_tutari, 2, '.', ''), $this->xml_ns['cbc']);
                         $TaxableAmount->addAttribute('currencyID', $para_birimi);
 
-                        $TaxAmount2 = $TaxSubtotal->addChild('TaxAmount', $urun_kdv_tutar, $this->xml_ns['cbc']);
+                        $TaxAmount2 = $TaxSubtotal->addChild('TaxAmount', number_format($urun_kdv_tutar, 2, '.', ''), $this->xml_ns['cbc']);
                         $TaxAmount2->addAttribute('currencyID', $para_birimi);
 
                         $TaxSubtotal->addChild('Percent', $urun_kdv_orani, $this->xml_ns['cbc']);
@@ -375,7 +375,7 @@
                         $SellersItemIdentification->addChild('ID', $urun_adi, $this->xml_ns["cbc"]);
 
                         $Price       = $InvoiceLine->addChild('Price', null, $this->xml_ns['cac']);
-                        $PriceAmount = $Price->addChild('PriceAmount', $urun_birim_fiyat, $this->xml_ns['cbc']);
+                        $PriceAmount = $Price->addChild('PriceAmount', number_format($urun_birim_fiyat, 2, '.', ''), $this->xml_ns['cbc']);
                         $PriceAmount->addAttribute('currencyID', $para_birimi);
 
                     }
