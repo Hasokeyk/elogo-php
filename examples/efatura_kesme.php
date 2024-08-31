@@ -83,10 +83,11 @@
 
             $fatura->setFaturaNo($fatura_no);
             $fatura->setFaturaEttn($elogo_login->sessionID);
-            $fatura->setFaturaTuru('TICARIFATURA'); //TICARIFATURA | SATIS
+            $fatura->setFaturaTuru('SATIS'); //TICARIFATURA
+            $fatura->setFaturaSenaryo('TICARIFATURA'); //SATIS
             $fatura->setFaturaTarihi('2023-02-26');
 
-            $fatura->setKdvOrani(18);
+            $fatura->setKdvOrani(20);
             //    $fatura->setKdvMuhafiyetKodu('325');
             $fatura->setFaturaKesenFirma($benim_firmam);
             $fatura->setMusteriFirma($musteri_firmasi);
