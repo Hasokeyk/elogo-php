@@ -5,7 +5,6 @@
     use Hasokeyk\Elogo\Fatura\FaturaSatir;
     use Hasokeyk\Elogo\Firma\BenimFirmam;
     use Hasokeyk\Elogo\Firma\MusteriFirmasi;
-    use Hasokeyk\Elogo\ElogoHata;
 
     require "vendor/autoload.php";
 
@@ -17,120 +16,106 @@
 
     $elogo_login = $elogo->giris_yap();
     if(isset($elogo_login->sessionID)){
-        try{
-            //SİZE AİT FİRMANIN BİLGİLERİ
-            $benim_firmam = new BenimFirmam();
-            $benim_firmam->setYetkiliAdi('Hasan'); // ŞAHIS İSE GEREKLİ
-            $benim_firmam->setYetkiliSoyadi('Yüksektepe'); // ŞAHIS İSE GEREKLİ
-            $benim_firmam->setFirmaAdi('Hasan Yüksektepe'); // TİCARİ İSE GEREKLİ
-            $benim_firmam->setTcKimlikNo('XXXXXXXXXXX'); // ŞAHIS İSE GEREKLİ
-            $benim_firmam->setVergiNo('XXXXXXXXXXX'); // TİCARİ İSE GEREKLİ
-            $benim_firmam->setMersisNo('XXXXXXXXXXX'); // OPSİYONEL
-            $benim_firmam->setTelefon('XXXXXXXXXXX'); // OPSİYONEL
-            $benim_firmam->setEmail('info@hayatikodla.net'); // OPSİYONEL
-            $benim_firmam->setWebsitesi('hayatikodla.net'); // OPSİYONEL
-            $benim_firmam->setVergiDairesi('HAYATIKODLA'); // GEREKLİ
-            $benim_firmam->setAcikAdres('TAM ADRES BİLGİSİ'); // GEREKLİ
-            $benim_firmam->setIl('İstanbul'); // GEREKLİ
-            $benim_firmam->setIlce('Sancaktepe'); // GEREKLİ
-            $benim_firmam->setBinaNo('XXX'); // GEREKLİ
-            $benim_firmam->setBinaAdi('XXX'); // GEREKLİ
-            $benim_firmam->setPostaKodu('XXXXXX'); // GEREKLİ
-            $benim_firmam->setUlke('Türkiye'); // GEREKLİ
-            $benim_firmam->setUlkeKodu('TR'); // GEREKLİ
 
-            //MÜŞTERİNİN FİRMASININ BİLGİLERİ
-            //Karşı taraf firma değil birey ise vergi noyu göndermeyebilirsiniz.
-            $musteri_firmasi = new MusteriFirmasi();
-            $musteri_firmasi->setYetkiliAdi('Hasan'); // ŞAHIS İSE GEREKLİ
-            $musteri_firmasi->setYetkiliSoyadi('Yüksektepe'); // ŞAHIS İSE GEREKLİ
-            $musteri_firmasi->setFirmaAdi('Hasan Yüksektepe'); // TİCARİ İSE GEREKLİ ŞAHIS İÇİN BOŞ BIRAKILABİLİR
-            $musteri_firmasi->setVergiNo('XXXXXXXXXXX'); // TİCARİ İSE GEREKLİ ŞAHIS İÇİN BOŞ BIRAKILABİLİR
-            $musteri_firmasi->setTcKimlikNo('XXXXXXXXXXX'); // ŞAHIS İSE GEREKLİ
-            $musteri_firmasi->setMersisNo('XXXXXXXXXXX'); // OPSİYONEL
-            $musteri_firmasi->setTelefon('XXXXXXXXXXX'); // OPSİYONEL
-            $musteri_firmasi->setEmail('info@hayatikodla.net'); // OPSİYONEL
-            $musteri_firmasi->setWebsitesi('hayatikodla.net'); // OPSİYONEL
-            $musteri_firmasi->setVergiDairesi('HAYATIKODLA'); // GEREKLİ
-            $musteri_firmasi->setAcikAdres('TAM ADRES BİLGİSİ'); // GEREKLİ
-            $musteri_firmasi->setIl('İstanbul'); // GEREKLİ
-            $musteri_firmasi->setIlce('Sancaktepe'); // GEREKLİ
-            $musteri_firmasi->setBinaNo('XXXXX'); // GEREKLİ
-            $musteri_firmasi->setBinaAdi('XXXXXX'); // GEREKLİ
-            $musteri_firmasi->setPostaKodu('XXXXXX'); // GEREKLİ
-            $musteri_firmasi->setUlke('Türkiye'); // GEREKLİ
-            $musteri_firmasi->setUlkeKodu('TR'); // GEREKLİ
+        //SİZE AİT FİRMANIN BİLGİLERİ
+        $benim_firmam = new BenimFirmam();
+        $benim_firmam->setYetkiliAdi('Hasan');
+        $benim_firmam->setYetkiliSoyadi('Yüksektepe');
+        $benim_firmam->setFirmaAdi('Hasan Yüksektepe');
+        $benim_firmam->setTcKimlikNo('XXXXXXXXXXX');
+        //        $benim_firmam->setVergiNo('XXXXXXXXXXX');
+        $benim_firmam->setMersisNo('XXXXXXXXXXX');
+        $benim_firmam->setTelefon('XXXXXXXXXXX');
+        $benim_firmam->setEmail('info@hayatikodla.net');
+        $benim_firmam->setWebsitesi('hayatikodla.net');
+        $benim_firmam->setVergiDairesi('HAYATIKODLA');
+        $benim_firmam->setAcikAdres('TAM ADRES BİLGİSİ');
+        $benim_firmam->setIl('İstanbul');
+        $benim_firmam->setIlce('Sancaktepe');
+        $benim_firmam->setBinaNo('XXX');
+        $benim_firmam->setBinaAdi('XXX');
+        $benim_firmam->setPostaKodu('XXXXXX');
+        $benim_firmam->setUlke('Türkiye');
+        $benim_firmam->setUlkeKodu('TR');
 
-            //FATURADAKİ ÜRÜN VEYA HİZMETLERİNİZİ AŞAĞIDAKİ GİBİ GİREBİLİRSİNİZ.
-            $fatura_satir = new FaturaSatir();
+        //MÜŞTERİNİN FİRMASININ BİLGİLERİ
+        //Karşı taraf firma değil birey ise vergi noyu göndermeyebilirsiniz.
+        $musteri_firmasi = new MusteriFirmasi();
+        $musteri_firmasi->setYetkiliAdi('Hasan');
+        $musteri_firmasi->setYetkiliSoyadi('Yüksektepe');
+        $musteri_firmasi->setFirmaAdi('Hasan Yüksektepe');
+        //        $musteri_firmasi->setVergiNo('XXXXXXXXXXX');
+        $musteri_firmasi->setTcKimlikNo('XXXXXXXXXXX');
+        //        $musteri_firmasi->setMersisNo('XXXXXXXXXXX');
+        $musteri_firmasi->setTelefon('XXXXXXXXXXX');
+        $musteri_firmasi->setEmail('info@hayatikodla.net');
+        $musteri_firmasi->setWebsitesi('hayatikodla.net');
+        $musteri_firmasi->setVergiDairesi('HAYATIKODLA');
+        $musteri_firmasi->setAcikAdres('TAM ADRES BİLGİSİ');
+        $musteri_firmasi->setIl('İstanbul');
+        $musteri_firmasi->setIlce('Sancaktepe');
+        $musteri_firmasi->setBinaNo('XXXXX');
+        $musteri_firmasi->setBinaAdi('XXXXXX');
+        $musteri_firmasi->setPostaKodu('XXXXXX');
+        $musteri_firmasi->setUlke('Türkiye');
+        $musteri_firmasi->setUlkeKodu('TR');
 
-            $fatura_satir->setYeniUrun()->setUrunAdi('Yazılım')->setUrunAciklama('Ürün 1 açıklama')->setUrunAdet(2)->setUrunBirimFiyat(500)->setUrunIndirimTutari(500)->setUrunKdvOrani(20);
-            $fatura_satir->setYeniUrun()->setUrunAdi('Yazılım2')->setUrunAciklama('Ürün 2 açıklama')->setUrunAdet(2)->setUrunBirimFiyat(1500)->setUrunKdvOrani(20);
+        //FATURADAKİ ÜRÜN VEYA HİZMETLERİNİZİ AŞAĞIDAKİ GİBİ GİREBİLİRSİNİZ.
+        $fatura_satir = new FaturaSatir();
 
-            //FATURA BİLGİLERİNİ AŞAĞIDAKİ GİBİ GİRİNİZ
-            //FATURA TUTARLARINI YUKARIDA GİRDİĞİNİZ ÜRÜN VEYA HİZMETLERİNİZE GÖRE OTOMATİK TOPLAMAKTADIR.
-            //BU YÖNTEM İLE TUTAR UYUŞMAZLIKLARININ ÖNÜNE GEÇİLMİŞTİR.
+        $fatura_satir->setYeniUrun()->setUrunAdi('Yazılım')->setUrunAciklama('Ürün 1 açıklama')->setUrunAdet(2)->setUrunBirimFiyat(500)->setUrunIndirimTutari(500);
+        $fatura_satir->setYeniUrun()->setUrunAdi('Yazılım2')->setUrunAciklama('Ürün 2 açıklama')->setUrunAdet(2)->setUrunBirimFiyat(1500);
 
-            $fatura    = new Fatura();
-            $fatura_no = $elogo->fatura_no_olustur(); // FATURA OLUŞTURURKEN EFATURA İÇİN 'FTR' KENDİ SIRASINA GÖRE DEVAM ETMELİ, E-ARŞİV İÇİN ARS  KENDİ SIRASINA GÖRE DEVAM ETMELİ,
-            // ÖRN: ARS0000001, ARS0000002, FTR0000001, FTR0000002
+        //FATURA BİLGİLERİNİ AŞAĞIDAKİ GİBİ GİRİNİZ
+        //FATURA TUTARLARINI YUKARIDA GİRDİĞİNİZ ÜRÜN VEYA HİZMETLERİNİZE GÖRE OTOMATİK TOPLAMAKTADIR.
+        //BU YÖNTEM İLE TUTAR UYUŞMAZLIKLARININ ÖNÜNE GEÇİLMİŞTİR.
 
-            $uuid = sprintf(// Mevcut yapınıza uygun olarak $uuid verisini kendiniz oluşturabilirsiniz.
-                '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-                mt_rand(0, 0xffff), mt_rand(0, 0xffff),
-                mt_rand(0, 0xffff),
-                mt_rand(0, 0x0fff) | 0x4000,
-                mt_rand(0, 0x3fff) | 0x8000,
-                mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
-            ); 
+        $fatura                 = new Fatura();
+        $fatura_no              = $elogo->fatura_no_olustur();
 
-            //FATURA TASARIMINIZ ÖZEL HAZIRLANMIŞ İSE BURADAN UBL FORMATINDAKİ DOSYANIZA TAM YOLUNU VERMELİSİNİZ.
-            //FATURA TASARIMINI ELOGO PANELİNDEN "AYARLAR / TASARIM ARAÇLARI" VEYA "AYARLAR / HAZIR TASARIM ARACI" MENÜSÜNDEN OLUŞTURUP İNDİREBİLİRSİNİZ
-            $varsayilan_earsiv_xml  = $fatura->varsayilan_earsiv_tasarim_dosyasi;
-            $varsayilan_efatura_xml = $fatura->varsayilan_efatura_tasarim_dosyasi;
+        //FATURA TASARIMINIZ ÖZEL HAZIRLANMIŞ İSE BURADAN UBL FORMATINDAKİ DOSYANIZA TAM YOLUNU VERMELİSİNİZ.
+        //FATURA TASARIMINI ELOGO PANELİNDEN "AYARLAR / TASARIM ARAÇLARI" VEYA "AYARLAR / HAZIR TASARIM ARACI" MENÜSÜNDEN OLUŞTURUP İNDİREBİLİRSİNİZ
+        $varsayilan_earsiv_xml  = $fatura->varsayilan_earsiv_tasarim_dosyasi;
+        $varsayilan_efatura_xml = $fatura->varsayilan_efatura_tasarim_dosyasi;
 
-            $fatura->setFaturaEarsivTasarimDosyasi($varsayilan_earsiv_xml);
-            $fatura->setFaturaEfaturaTasarimDosyasi($varsayilan_efatura_xml);
+        $fatura->setFaturaEarsivTasarimDosyasi($varsayilan_earsiv_xml);
+        $fatura->setFaturaEfaturaTasarimDosyasi($varsayilan_efatura_xml);
 
-            $fatura->setFaturaNo($fatura_no);
-            $fatura->setFaturaEttn($uuid);
-            // FATURA E-ARŞİV ise 'EARSIVFATURA', E-FATURA ise 'TICARIFATURA' kullanılabilir.
-            $fatura->setFaturaTuru('TICARIFATURA'); // ['TICARIFATURA', 'EARSIVFATURA', 'TEMELFATURA', 'IHRACAT', 'KAMU', 'HALFATURA', 'YOLCUBERABER']
-            $fatura->setFaturaTuru('SATIS'); // ['SATIS', 'IADE', 'TEVKIFATIADE', 'IHTIYACKAYITLI', 'ISTISNA', 'OZELMATRAH', 'TEVKIFAT', 'SGK', 'KONAKLAMAVERGISI']
-            $fatura->setFaturaTarihi('2023-02-26');
+        $fatura->setFaturaNo($fatura_no);
+        $fatura->setFaturaEttn($elogo_login->sessionID);
+        $fatura->setFaturaTuru('TICARIFATURA'); //TICARIFATURA | SATIS
+        $fatura->setFaturaTarihi('2023-02-26');
 
-            $fatura->setKdvOrani(18);
-            //    $fatura->setKdvMuhafiyetKodu('325');
-            $fatura->setFaturaKesenFirma($benim_firmam);
-            $fatura->setMusteriFirma($musteri_firmasi);
-            $fatura->setParaBirimi('TRY');
+        $fatura->setKdvOrani(18);
+        //    $fatura->setKdvMuhafiyetKodu('325');
+        $fatura->setFaturaKesenFirma($benim_firmam);
+        $fatura->setMusteriFirma($musteri_firmasi);
+        $fatura->setParaBirimi('TRY');
 
-            //PARA BİRİMİNİZ TRY DIŞINDA BİR PARA BİRİMİ İSE MUTLAKA KUR BİLGİSİ GİRMELİSİNİZ
-            //        $fatura->setKurFiyati('18.1540');
+        //PARA BİRİMİNİZ TRY DIŞINDA BİR PARA BİRİMİ İSE MUTLAKA KUR BİLGİSİ GİRMELİSİNİZ
+        //        $fatura->setKurFiyati('18.1540');
 
-            $fatura->setUrunler($fatura_satir);
+        $fatura->setUrunler($fatura_satir);
 
-            //FATURA TASARIMINIZDA ÖZEL ALANLAR OLABİLİR. BU ÖZEL ALANLARI ELOGO PANELİNDE
-            //"AYARLAR / GÖRSEL TASARIM EK ALANLARI" MENÜSÜNDEN EKLEYEBİLİRSİNİZ. FAKAT EKLERKER
-            //XSLT ISMINA
-            //        <xsl:for-each select="//n1:Invoice/cac:AdditionalDocumentReference">
-            //            <xsl:if test ="cbc:DocumentType = 'GemiNo'">
-            //                <xsl:value-of select="cbc:ID"/>
-            //            </xsl:if>
-            //        </xsl:for-each>
-            //  BU XML KOMUTUNU YAZMALISINIZ.
-            //BU KOMUTTAKİ "GemiNo" KISMI AŞAĞIDAKİ KODDA KULLANACAĞINIZ KISA KOD OLMALIDIR
-            //        $parametreler = [
-            //            'GemiNo' => 'Hsn123',
-            //        ];
-            //
-            //        $fatura->setOzelParametreler($parametreler);
+        //FATURA TASARIMINIZDA ÖZEL ALANLAR OLABİLİR. BU ÖZEL ALANLARI ELOGO PANELİNDE
+        //"AYARLAR / GÖRSEL TASARIM EK ALANLARI" MENÜSÜNDEN EKLEYEBİLİRSİNİZ. FAKAT EKLERKER
+        //XSLT ISMINA
+        //        <xsl:for-each select="//n1:Invoice/cac:AdditionalDocumentReference">
+        //            <xsl:if test ="cbc:DocumentType = 'GemiNo'">
+        //                <xsl:value-of select="cbc:ID"/>
+        //            </xsl:if>
+        //        </xsl:for-each>
+        //  BU XML KOMUTUNU YAZMALISINIZ.
+        //BU KOMUTTAKİ "GemiNo" KISMI AŞAĞIDAKİ KODDA KULLANACAĞINIZ KISA KOD OLMALIDIR
+        //        $parametreler = [
+        //            'GemiNo' => 'Hsn123',
+        //        ];
+        //
+        //        $fatura->setOzelParametreler($parametreler);
 
-            $einvoice = $elogo->earsiv_gonder($fatura, $benim_firmam, $musteri_firmasi);
-            print_r($einvoice);
-        }catch(ElogoHata $err){ // ELOGO Servisinden gelen yanıtları okunabilir hale getirir.
-            echo $err->getMessage();
-        }
+        $einvoice = $elogo->earsiv_gonder($fatura, $benim_firmam, $musteri_firmasi);
+        print_r($einvoice);
+
     }
     else{
         echo 'Giriş bilgileri hatalı';
