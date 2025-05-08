@@ -101,8 +101,8 @@
 			}
 
 			$result = $this->client->CheckGibUser([
-				'sessionId'   => $this->session_id,
-				'vknTcknList' => $param,
+				'sessionID'   => $this->session_id,
+				'vknTcknList' => $param, 
 			]);
 
 			if(property_exists($result, 'CheckGibUserResult')){
@@ -122,7 +122,7 @@
 		public function musteri_gib_sorgula($sorgulama_turu = '0', $tcn_or_vkn){
 
 			$result = $this->client->GetValidateGIBUser([
-				'sessionId' => $this->session_id,
+				'sessionID' => $this->session_id,
 				'paramList' => [
 					'VKN='.$tcn_or_vkn,
 					'DOCUMENTTYPE='.$sorgulama_turu,
@@ -167,9 +167,6 @@
 			if(!is_null($alias)){
 				$eLogoParamList[] = "ALIAS=".$alias;
 			}
-
-			print_r($eLogoParamList);
-			exit;
 
 			$data = [
 				'sessionID' => $this->session_id,
